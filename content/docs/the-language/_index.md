@@ -1,7 +1,7 @@
 +++
-title = "Help"
+title = "The Language"
 template = "docs/section.html"
 sort_by = "weight"
-weight = 5
+weight = 2
 draft = false
 +++
