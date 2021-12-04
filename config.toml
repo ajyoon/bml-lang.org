@@ -1,7 +1,5 @@
 # The URL the site will be built for
-# TODO switch here when releasing
-# base_url = "https://bml-lang.org"
-base_url = "https://objective-leakey-5ca16a.netlify.app/"
+base_url = "https://bml-lang.org"
 
 title = "BML"
 description = "A stochastic markup language"
