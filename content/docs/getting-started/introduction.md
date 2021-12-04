@@ -24,16 +24,19 @@ for syntax highlighting and built-in runner support!
 BML can be installed and pulled into your projects using `npm`.
 Installing is as simple as:
 
-    npm install bml
+```sh
+npm install bml
+```
 
 Once installed, you can use BML locally in node scripts using the
 primary package entrypoint function exported by the package.
 
-    const bml = require('bml');
-    const aBmlScript = 'some bml markup';
-    const bmlOutput = bml(aBmlScript);
-    console.log(bmlOutput);
-
+```js
+const bml = require('bml');
+const aBmlScript = 'some bml markup';
+const bmlOutput = bml(aBmlScript);
+console.log(bmlOutput);
+```
 This function renders a given string of BML markup and returns its
 output.
 
