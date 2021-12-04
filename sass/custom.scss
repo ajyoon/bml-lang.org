@@ -9,3 +9,16 @@
 code {
   background: inherit;
 }
+
+// Landing page styles
+
+.bml-output-wrapper {
+  min-height: 4em;
+}
+
+.bml-output-target {
+  position: absolute;
+  transition: opacity 0.5s ease-in;
+}
+
+// End of landing page styles
