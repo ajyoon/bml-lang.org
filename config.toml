@@ -26,3 +26,8 @@ highlight_theme = "monokai"
 
 [extra]
 # Put all your custom variables here
+edit_page = false
+docs_repo = "https://github.com/ajyoon/bml-lang.org"
+project_repo = "https://github.com/ajyoon/bml"
+repo_branch = "main"
+

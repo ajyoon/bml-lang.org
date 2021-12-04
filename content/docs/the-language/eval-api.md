@@ -14,15 +14,16 @@ Some functions are automatically made available to `eval blocks
 <eval>` under the `bml` namespace. They can be invoked like any other
 javascript function like so:
 
-    eval {
-        provide({
-            customFunction: () => {
-                return bml.randomInt(0, 20);
-            }
-        });
-    }
-    {call customFunction}
-
+```bml
+eval {
+    provide({
+        customFunction: () => {
+            return bml.randomInt(0, 20);
+        }
+    });
+}
+{call customFunction}
+```
 
 {% note() %}
 
@@ -33,12 +34,16 @@ accessed in the `eval` block of bml scripts.
 
 ------------------------------------------------------------------------
 
-    bml.randomFloat(min, max)
+```js
+bml.randomFloat(min, max)
+```
 
 Return a random float within the given bounds
 
 ------------------------------------------------------------------------
 
-    bml.randomInt(min, max)
+```js
+bml.randomInt(min, max)
+```
 
 Return a random integer within the given bounds

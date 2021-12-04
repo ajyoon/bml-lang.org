@@ -12,7 +12,9 @@ top = false
 
 The bml library is exposed by a single function:
 
-    bml(sourceString, renderSettings)
+```js
+bml(sourceString, renderSettings)
+```
 
 where `sourceString` is a single string holding the contents of a
 complete bml document, and `renderSettings` is an optional `Object` with

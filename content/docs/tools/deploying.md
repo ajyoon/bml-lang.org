@@ -26,21 +26,27 @@ website, you can use the built-in webpack build pipeline. First,
 download or clone [the BML repository](https://github.com/ajyoon/bml),
 then run the build script from the repo.
 
-    npm run build
+```sh
+npm run build
+```
 
 This will produce a compiled and polyfilled file at `dist/bml.bundle.js`
 ready to be pulled into your site and used in most browsers we know
 about.
 
-    <script src="/path/to/bml.bundle.js"></script>
+```html
+<script src="/path/to/bml.bundle.js"></script>
+```
 
 Once loaded, `bml` is exposed by a single method which takes a string of
 markup and returns a rendered output string.
 
-    <script>
-        document.getElementById("someTargetId").innerHTML =
-            bml("some bml loaded as a js string");
-    </script>
+```html
+<script>
+    document.getElementById("someTargetId").innerHTML =
+        bml("some bml loaded as a js string");
+</script>
+```
 
 ## Using through an NPM Dependency
 
@@ -49,9 +55,7 @@ BML can be added as a dependency in your site's `package.json`.
 
 ```json
 {
-  ...
   "dependencies": {
-    ...
     "bml": "0.0.23"
   },
 }
