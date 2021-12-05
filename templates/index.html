@@ -92,14 +92,18 @@ Empty yet structured,
  editor.session.setMode("ace/mode/bml");
  editor.clearSelection();
  editor.moveCursorTo(0, 0);
+ editor.renderer.setPadding(10);
+ editor.renderer.setScrollMargin(10, 10);
  editor.setOptions({
    showPrintMargin: false,
    showLineNumbers: false,
    showFoldWidgets: false,
    showGutter: false,
+   useSoftTabs: true,
    wrap: true,
-   minLines: 25,
-   maxLines: 25,
+   highlightActiveLine: false,
+   minLines: 22,
+   maxLines: 22,
  });
 
  let activeOutput = 1;
