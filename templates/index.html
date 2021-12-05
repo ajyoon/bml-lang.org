@@ -8,7 +8,7 @@
   {% else %}
     {% set title = "" %}
   {% endif %}
-  
+
   {% if config.extra.title_addition and title %}
     {% set title_addition = title_separator ~ config.extra.title_addition %}
   {% elif config.extra.title_addition %}
@@ -16,9 +16,9 @@
   {% else %}
     {% set title_addition = "" %}
   {% endif %}
-  
+
   {% set description = config.description %}
-  
+
   {{ macros_head::seo(title=title, title_addition=title_addition, description=description, is_home=true) }}
 {% endblock seo %}
 
@@ -44,16 +44,25 @@
   </div>
 </div>
 
-<div class="container mb-4">
-  <div class="row gy-4 align-items-center">
-    <div class="col-md-12 col-lg-10">
+<div class="container mb-4 dual-editor-pane-wrapper">
+  <div class="row gy-4 align-items-center justify-content-start">
+    <div class="col-md-16 col-lg-9 editor-wrapper h-100">
       <div id="editor">
       </div>
     </div>
-    <div class="col-md-12 col-lg-2">
-      <div class="bml-output-wrapper">
-        <div class="bml-output-target" id="bml-target-1"></div>
-        <div class="bml-output-target" id="bml-target-2"></div>
+    <div class="col-md-16 col-lg-7">
+      <div class="row">
+        <div class="col-16">
+          <div class="bml-output-wrapper">
+            <div class="bml-output-target" id="bml-target-1"></div>
+            <div class="bml-output-target" id="bml-target-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row" aria-hidden="true">
+        <div class="col" id="lao-tzu-5-source">
+          天 地 之 間<br/>其 猶 橐 籥 乎<br/>虛 而 不 屈<br/>動 而 愈 出
+        </div>
       </div>
     </div>
   </div>
@@ -64,27 +73,27 @@
 <script>
  let bmlSrc = `{#bellows: (a bellows), (an accordion)}
 {
-    (Are not Heaven and Earth like {@bellows}?),
-    (Yet Heaven and Earth and all that lies between are like {@bellows}.),
-    (Yet is not the space between Heaven and Earth like {@bellows}?),
-    (But isn't the space between Heaven and Earth like {@bellows}?)
+  (Are not Heaven and Earth like {@bellows}?),
+  (Yet Heaven and Earth and all that lies between are like {@bellows}.),
+  (Yet is not the space between Heaven and Earth like {@bellows}?),
+  (But isn't the space between Heaven and Earth like {@bellows}?)
 }
 
 Empty yet structured,
 {@bellows:
-    0 -> ({
-        (worked, yet still the wind blows),
-        (it moves, inexhaustibly giving)
-    }),
-    1 -> ({
-        (pushed and pulled, inexhaustibly singing),
-        (it moves, inexhaustibly singing),
-        (worked, yet singing without end)
-    })
+  0 -> ({
+    (worked, yet still the wind blows),
+    (it moves, inexhaustibly giving)
+  }),
+  1 -> ({
+    (pushed and pulled, inexhaustibly singing),
+    (it moves, inexhaustibly singing),
+    (worked, yet singing without end)
+  })
 }.
- 
+
 <p style="text-align: right"><i>— Lao Tzu 5</i></p>`;
- 
+
  var editor = ace.edit("editor");
  editor.setValue(bmlSrc);
  editor.setTheme("ace/theme/monokai");
@@ -101,8 +110,7 @@ Empty yet structured,
    useSoftTabs: true,
    wrap: true,
    highlightActiveLine: false,
-   minLines: 22,
-   maxLines: 22,
+   tabSize: 2,
  });
 
  let activeOutput = 1;
@@ -111,7 +119,12 @@ Empty yet structured,
    oldOutputTarget.style.opacity = 0;
    activeOutput = activeOutput === 1 ? 2 : 1;
    let outputTarget = document.getElementById('bml-target-' + activeOutput);
-   outputTarget.innerHTML = bml(editor.getValue(), {renderMarkdown: true});
+   let newEditorValue = editor.getValue();
+   if (newEditorValue !== bmlSrc) {
+     let laoTzuSourceEl = document.getElementById('lao-tzu-5-source');
+     laoTzuSourceEl.style.opacity = 0
+   }
+   outputTarget.innerHTML = bml(newEditorValue, {renderMarkdown: true});
    outputTarget.style.opacity = 1;
    setTimeout(rotateBmlOutput, 4000);
  }
@@ -125,6 +138,3 @@ Empty yet structured,
 {% endraw %}
 
 {% endblock content %}
-
-
-

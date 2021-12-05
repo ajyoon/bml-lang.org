@@ -12,29 +12,66 @@ code {
   }
 }
 
-
+// Needed to work around https://github.com/aaranxu/adidoks/issues/23
 code {
-  // Needed to work around https://github.com/aaranxu/adidoks/issues/23
   background: inherit;
 }
 
+$editor-pane-min-height: 28rem;
+
+.dual-editor-pane-wrapper {
+  min-height: $editor-pane-min-height;
+}
+
+.editor-wrapper {
+  // For some reason I have to explicitly set this height.
+  // 100% doesn't work. I think it's some weird interaction
+  // between the Ace editor magic and flexbox
+  min-height: $editor-pane-min-height;
+  position: relative;
+}
+
 #editor {
-  height: 20rem;
   font-size: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 // Landing page styles
 
 .bml-output-wrapper {
-  min-height: 4em;
+  min-height: 6rem;
+  position: relative;
 }
 
 .bml-output-target {
   position: absolute;
+  top: 0;
+  right: 0.5rem; // to align with lao tzu source
+  bottom: 0;
+  left: 0;
   transition: opacity 0.5s ease-in;
 
   > p {
     margin-bottom: 0;
+  }
+}
+
+#lao-tzu-5-source {
+  display: none;
+}
+
+// Bootstrap mixins aren't available here, so including it manually
+// 1200px corresponds with `@include media-breakpoint-up(xxl)`
+// https://getbootstrap.com/docs/5.0/layout/breakpoints/
+@media (min-width: 1400px) {
+  #lao-tzu-5-source {
+    display: block;
+    transition: opacity 0.5s ease-in;
+    writing-mode: vertical-rl;
   }
 }
 
