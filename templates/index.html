@@ -24,6 +24,7 @@
 
 {% block page_specific_head_tags %}
   <script src="js/bml.bundle.js"></script>
+  <script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 {% endblock page_specific_head_tags %}
 
 {% block content %}
@@ -44,12 +45,13 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row align-items-center">
-    <div class="col">
-      {{ section.content | safe }}
+<div class="container mb-4">
+  <div class="row gy-4 align-items-center">
+    <div class="col-md-12 col-lg-10">
+      <div id="editor">
+      </div>
     </div>
-    <div class="col">
+    <div class="col-md-12 col-lg-2">
       <div class="bml-output-wrapper">
         <div class="bml-output-target" id="bml-target-1"></div>
         <div class="bml-output-target" id="bml-target-2"></div>
@@ -61,14 +63,14 @@
 {% raw %}
 <!-- Code for live-regenerating BML example -->
 <script>
- let bmlSrc = `
-{#bellows: (a bellows), (an accordion)}
+ let bmlSrc = `{#bellows: (a bellows), (an accordion)}
 {
     (Are not Heaven and Earth like {@bellows}?),
     (Yet Heaven and Earth and all that lies between are like {@bellows}.),
     (Yet is not the space between Heaven and Earth like {@bellows}?),
     (But isn't the space between Heaven and Earth like {@bellows}?)
-}<br/>
+}
+
 Empty yet structured,
 {@bellows:
     0 -> ({
@@ -80,19 +82,43 @@ Empty yet structured,
         (it moves, inexhaustibly singing),
         (worked, yet singing without end)
     })
-}.`;
+}.
+ 
+<p style="text-align: right"><i>— Lao Tzu 5</i></p>`;
+ 
+ var editor = ace.edit("editor");
+ editor.setValue(bmlSrc);
+ editor.setTheme("ace/theme/monokai");
+ editor.session.setMode("ace/mode/bml");
+ editor.clearSelection();
+ editor.moveCursorTo(0, 0);
+ editor.setOptions({
+   showPrintMargin: false,
+   showLineNumbers: false,
+   showFoldWidgets: false,
+   showGutter: false,
+   wrap: true,
+   minLines: 25,
+   maxLines: 25,
+ });
+
  let activeOutput = 1;
  function rotateBmlOutput() {
    let oldOutputTarget = document.getElementById('bml-target-' + activeOutput);
    oldOutputTarget.style.opacity = 0;
    activeOutput = activeOutput === 1 ? 2 : 1;
    let outputTarget = document.getElementById('bml-target-' + activeOutput);
-   outputTarget.innerHTML = bml(bmlSrc, {renderMarkdown: true});
+   outputTarget.innerHTML = bml(editor.getValue(), {renderMarkdown: true});
    outputTarget.style.opacity = 1;
-   setTimeout(rotateBmlOutput, 3000);
+   setTimeout(rotateBmlOutput, 4000);
  }
  rotateBmlOutput();
 </script>
+
+<!-- ACE Editor -->
+
+</script>
+
 {% endraw %}
 
 {% endblock content %}

@@ -1,3 +1,6 @@
 [submodule "themes/adidoks"]
 	path = themes/adidoks
 	url = https://github.com/aaranxu/adidoks.git
+[submodule "ace"]
+	path = ace
+	url = git@github.com:ajaxorg/ace.git

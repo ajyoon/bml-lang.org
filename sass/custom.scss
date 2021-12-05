@@ -11,6 +11,11 @@ code {
   background: inherit;
 }
 
+#editor {
+  height: 20rem;
+  font-size: 16px;
+}
+
 // Landing page styles
 
 .bml-output-wrapper {
@@ -20,6 +25,10 @@ code {
 .bml-output-target {
   position: absolute;
   transition: opacity 0.5s ease-in;
+
+  > p {
+    margin-bottom: 0;
+  }
 }
 
 // End of landing page styles
