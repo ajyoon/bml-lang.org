@@ -3,4 +3,4 @@
 	url = https://github.com/aaranxu/adidoks.git
 [submodule "ace"]
 	path = ace
-	url = git@github.com:ajaxorg/ace.git
+	url = git@github.com:ajyoon/ace.git
