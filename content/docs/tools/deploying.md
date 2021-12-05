@@ -56,7 +56,7 @@ BML can be added as a dependency in your site's `package.json`.
 ```json
 {
   "dependencies": {
-    "bml": "0.0.23"
+    "bml": "0.0.24"
   },
 }
 ```
