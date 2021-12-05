@@ -30,6 +30,3 @@ edit_page = false
 docs_repo = "https://github.com/ajyoon/bml-lang.org"
 project_repo = "https://github.com/ajyoon/bml"
 repo_branch = "main"
-
-[extra.footer]
-info = 'This site is available under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 license</a>: No Rights Reserved.<br/>Help improve these docs <a href="https://github.com/ajyoon/bml-lang.org">here</a>.<br/> Built with <a href="https://www.getzola.org/">Zola</a> using the <a href="https://github.com/aaranxu/adidoks">AdiDoks</a> theme.'
