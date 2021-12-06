@@ -19,65 +19,127 @@ code {
 
 $editor-pane-min-height: 28rem;
 
-.dual-editor-pane-wrapper {
+.front-page-sandbox {
   min-height: $editor-pane-min-height;
+
+  .editor-wrapper {
+    // For some reason I have to explicitly set this height.
+    // 100% doesn't work. I think it's some weird interaction
+    // between the Ace editor magic and flexbox
+    min-height: $editor-pane-min-height;
+    position: relative;
+  }
+
+  #editor {
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .bml-output-wrapper {
+    min-height: 6rem;
+    position: relative;
+  }
+
+  .bml-output-target {
+    position: absolute;
+    top: 0;
+    right: 0.5rem; // to align with lao tzu source
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in;
+
+    > p {
+      margin-bottom: 0;
+    }
+  }
+
+  #lao-tzu-5-source {
+    display: none;
+  }
+
+  // Bootstrap mixins aren't available here, so including it manually
+  // 1200px corresponds with `@include media-breakpoint-up(xxl)`
+  // https://getbootstrap.com/docs/5.0/layout/breakpoints/
+  @media (min-width: 1400px) {
+    #lao-tzu-5-source {
+      display: block;
+      transition: opacity 0.5s ease-in;
+      writing-mode: vertical-rl;
+    }
+  }
 }
 
-.editor-wrapper {
-  // For some reason I have to explicitly set this height.
-  // 100% doesn't work. I think it's some weird interaction
-  // between the Ace editor magic and flexbox
-  min-height: $editor-pane-min-height;
-  position: relative;
-}
+$monokai-bg: #272822;
+$monokai-comment: #797979;
 
-#editor {
-  font-size: 16px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.full-page-sandbox {
+  height: 100vh;
+  background: $monokai-bg;
+  
+  > .container-fluid {
+    border-bottom: 1px solid $monokai-comment;
+  }
+
+  .editor-wrapper {
+    height: 80vh;
+    position: relative;
+  }
+
+  #editor {
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .bml-output-wrapper {
+    min-height: 6rem;
+    position: relative;
+  }
+
+  .bml-output-target {
+    position: absolute;
+    top: 0;
+    right: 0.5rem; // to align with lao tzu source
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in;
+
+    > p {
+      margin-bottom: 0;
+    }
+  }
+  
+  .editor-help {
+    padding: 1rem;
+    input {
+      color: inherit;
+      border: 1px solid $monokai-comment;
+      background: $monokai-bg;
+    }
+    // Disable inc/dec widgets since they are unstyleable
+    input[type="number"] {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none;
+    }
+    #bml-render-settings {
+      width: 20rem;
+    }
+  }
 }
 
 .bml-error {
   text-decoration: underline;
   text-decoration-color: red;
 }
-
-// Landing page styles
-
-.bml-output-wrapper {
-  min-height: 6rem;
-  position: relative;
-}
-
-.bml-output-target {
-  position: absolute;
-  top: 0;
-  right: 0.5rem; // to align with lao tzu source
-  bottom: 0;
-  left: 0;
-  transition: opacity 0.5s ease-in;
-
-  > p {
-    margin-bottom: 0;
-  }
-}
-
-#lao-tzu-5-source {
-  display: none;
-}
-
-// Bootstrap mixins aren't available here, so including it manually
-// 1200px corresponds with `@include media-breakpoint-up(xxl)`
-// https://getbootstrap.com/docs/5.0/layout/breakpoints/
-@media (min-width: 1400px) {
-  #lao-tzu-5-source {
-    display: block;
-    transition: opacity 0.5s ease-in;
-    writing-mode: vertical-rl;
-  }
-}
-
-// End of landing page styles

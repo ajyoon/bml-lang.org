@@ -30,3 +30,15 @@ edit_page = false
 docs_repo = "https://github.com/ajyoon/bml-lang.org"
 project_repo = "https://github.com/ajyoon/bml"
 repo_branch = "main"
+
+[[extra.menu.main]]
+name = "Docs"
+section = "docs"
+url = "/docs/"
+weight = 10
+
+[[extra.menu.main]]
+name = "Try"
+section = "try"
+url = "/try/"
+weight = 20

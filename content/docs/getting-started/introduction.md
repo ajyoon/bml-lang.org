@@ -13,12 +13,6 @@ top = false
 BML is a stochastic markup language that lets you write
 chance-determined text with ease.
 
-[Try it online!](https://sandbox.bml-lang.org)
-
-And check out [the VS Code
-extension](https://marketplace.visualstudio.com/items?itemName=bml-lang.bml-vscode)
-for syntax highlighting and built-in runner support!
-
 # Getting Started
 
 BML can be installed and pulled into your projects using `npm`.

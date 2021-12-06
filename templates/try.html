@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ super() }}
+
+  {% set title = "Try BML Online" %}
+  {% set title_addition = "" %}
+  {% set description = config.description %}
+
+  {{ macros_head::seo(title=title, title_addition=title_addition, description=description, is_home=false) }}
+{% endblock seo %}
+
+{% block page_specific_head_tags %}
+  <script src="/js/bml.bundle.js"></script>
+  <script src="/js/ace/ace.js"></script>
+  <script src="/js/relaxed-json.min.js"></script>
+{% endblock page_specific_head_tags %}
+
+<!-- Auto-enable dark mode on this page -->
+{% block body %}{% set page_class="dark" %}{% endblock body %}
+
+{% block content %}
+<div class="full-page-sandbox">
+  <div class="container-fluid">
+    <div class="row align-items-center justify-content-start">
+      <div class="col-md-16 col-lg-9 editor-wrapper">
+        <div id="editor">
+        </div>
+      </div>
+      <div class="col-md-16 col-lg-7">
+        <div class="bml-output-wrapper">
+          <div class="bml-output-target" id="bml-target-1"></div>
+          <div class="bml-output-target" id="bml-target-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="editor-help">
+    <div class="editor-settings">
+      <ul>
+        <li>
+          <label for="bml-refresh-rate-sec">Regeneration interval (secs):</label>
+          <input type="number" id="bml-refresh-rate-sec" value="4" min="1"/>
+        </li>
+        <li>
+          <label for="bml-render-settings">BML <a href="/docs/the-language/js-library/">render settings:</a></label>
+          <code style="padding:0"><input type="text" id="bml-render-settings" value="{renderMarkdown: true}"/></code>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+{% raw %}
+<!-- Code for live-regenerating BML example -->
+<script>
+ let bmlSrc = `{#bellows: (a bellows), (an accordion)}
+{
+  (Are not Heaven and Earth like {@bellows}?),
+  (Yet Heaven and Earth and all that lies between are like {@bellows}.),
+  (Yet is not the space between Heaven and Earth like {@bellows}?),
+  (But isn't the space between Heaven and Earth like {@bellows}?)
+}
+
+Empty yet structured,
+{@bellows:
+  0 -> ({
+    (worked, yet still the wind blows),
+    (it moves, inexhaustibly giving)
+  }),
+  1 -> ({
+    (pushed and pulled, inexhaustibly singing),
+    (it moves, inexhaustibly singing),
+    (worked, yet singing without end)
+  })
+}.
+
+<p style="text-align: right"><i>— Lao Tzu 5</i></p>`;
+
+ var editor = ace.edit("editor");
+ editor.setValue(bmlSrc);
+ editor.setTheme("ace/theme/monokai");
+ editor.session.setMode("ace/mode/bml");
+ editor.clearSelection();
+ editor.renderer.setPadding(10);
+ editor.moveCursorTo(0, 0);
+ editor.setOptions({
+   showPrintMargin: false,
+   showLineNumbers: true,
+   showFoldWidgets: false,
+   showGutter: true,
+   useSoftTabs: true,
+   wrap: true,
+   highlightActiveLine: true,
+   tabSize: 2,
+   vScrollBarAlwaysVisible: true,
+ });
+
+ let activeOutput = 1;
+ function rotateBmlOutput() {
+   let oldOutputTarget = document.getElementById('bml-target-' + activeOutput);
+   oldOutputTarget.style.opacity = 0;
+   activeOutput = activeOutput === 1 ? 2 : 1;
+   let outputTarget = document.getElementById('bml-target-' + activeOutput);
+   try {
+     let bmlSettings = RJSON.parse(document.getElementById('bml-render-settings').value)
+     outputTarget.innerHTML = bml(editor.getValue(), bmlSettings);
+   } catch (e) {
+     outputTarget.innerHTML = '<code class="bml-error">' + e + '</code>';
+   }
+   outputTarget.style.opacity = 1;
+
+   let interval = document.getElementById('bml-refresh-rate-sec').valueAsNumber * 1000;
+   setTimeout(rotateBmlOutput, interval);
+ }
+ rotateBmlOutput();
+</script>
+
+{% endraw %}
+
+{% endblock content %}

@@ -23,7 +23,7 @@
 {% endblock seo %}
 
 {% block page_specific_head_tags %}
-  <script src="js/bml.bundle.js"></script>
+  <script src="/js/bml.bundle.js"></script>
   <script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 {% endblock page_specific_head_tags %}
 
@@ -44,7 +44,7 @@
   </div>
 </div>
 
-<div class="container mb-4 dual-editor-pane-wrapper">
+<div class="container mb-4 front-page-sandbox">
   <div class="row gy-4 align-items-center justify-content-start">
     <div class="col-md-16 col-lg-9 editor-wrapper h-100">
       <div id="editor">
@@ -133,10 +133,6 @@ Empty yet structured,
    setTimeout(rotateBmlOutput, 4000);
  }
  rotateBmlOutput();
-</script>
-
-<!-- ACE Editor -->
-
 </script>
 
 {% endraw %}
