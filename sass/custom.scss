@@ -40,6 +40,11 @@ $editor-pane-min-height: 28rem;
   left: 0;
 }
 
+.bml-error {
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
 // Landing page styles
 
 .bml-output-wrapper {

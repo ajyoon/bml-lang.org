@@ -124,7 +124,11 @@ Empty yet structured,
      let laoTzuSourceEl = document.getElementById('lao-tzu-5-source');
      laoTzuSourceEl.style.opacity = 0
    }
-   outputTarget.innerHTML = bml(newEditorValue, {renderMarkdown: true});
+   try {
+     outputTarget.innerHTML = bml(newEditorValue, {renderMarkdown: true});
+   } catch (e) {
+     outputTarget.innerHTML = '<code class="bml-error">' + e + '</code>';
+   }
    outputTarget.style.opacity = 1;
    setTimeout(rotateBmlOutput, 4000);
  }
