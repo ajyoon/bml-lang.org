@@ -50,18 +50,34 @@
     </div>
   </div>
 
-  <div class="editor-help">
-    <div class="editor-settings">
-      <ul>
-        <li>
-          <label for="bml-refresh-rate-sec">Regeneration interval (secs):</label>
-          <input type="number" id="bml-refresh-rate-sec" value="4" min="1"/>
-        </li>
-        <li>
-          <label for="bml-render-settings">BML <a href="/docs/the-language/js-library/">render settings:</a></label>
-          <code style="padding:0"><input type="text" id="bml-render-settings" value="{renderMarkdown: true}"/></code>
-        </li>
-      </ul>
+  <div class="container-fluid py-2 editor-help">
+    <div class="row">
+      <div class="col">
+        <h3>Cheat Sheet</h3>
+        <ul>
+          <li>Inline choice: <code>{(X), (Y)}</code> → <i>X</i> or <i>Y</i></li> 
+          <li>With weights: <code>{(X) 70, (Y)}</code> → <i>X</i> (70% of the time) or <i>Y</i> (30% of the time)</li> 
+          <li>Nested choice: <code>{(X), (nested {(Y), (Z)})}</code> → <i>X</i> or (<i>nested Y</i> or <i>nested Z</i>)</li>
+          <li>References: <code>{Name: (Alice), (Bob)} tied {@Name: 0 -> (her), 1 -> (his)} shoe.</code></li> 
+        </ul>
+        <p>
+          See <a href="/docs/the-language-language-overview">the docs</a> for more.
+        </p>
+        
+      </div>
+      <div class="col editor-settings">
+        <h4>Settings</h4>
+        <ul>
+          <li>
+            <label for="bml-refresh-rate-sec">Regeneration interval (secs):</label>
+            <input type="number" id="bml-refresh-rate-sec" value="4" min="1"/>
+          </li>
+          <li>
+            <label for="bml-render-settings">BML <a href="/docs/the-language/js-library/">render settings:</a></label>
+            <code style="padding:0"><input type="text" id="bml-render-settings" value="{renderMarkdown: true}"/></code>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 

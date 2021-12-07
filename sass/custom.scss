@@ -75,9 +75,9 @@ $editor-pane-min-height: 28rem;
 
 $monokai-bg: #272822;
 $monokai-comment: #797979;
+$editor-height: 60vh;
 
 .full-page-sandbox {
-  height: 100vh;
   background: $monokai-bg;
 
   > .container-fluid {
@@ -85,7 +85,7 @@ $monokai-comment: #797979;
   }
 
   .editor-wrapper {
-    height: 80vh;
+    height: $editor-height;
     position: relative;
   }
 
@@ -99,7 +99,7 @@ $monokai-comment: #797979;
   }
 
   .bml-output-wrapper {
-    height: 80vh;
+    height: $editor-height;
     position: relative;
   }
 
@@ -119,7 +119,6 @@ $monokai-comment: #797979;
   }
 
   .editor-help {
-    padding: 1rem;
     input {
       color: inherit;
       border: 1px solid $monokai-comment;
