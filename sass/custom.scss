@@ -17,11 +17,32 @@ code {
   background: inherit;
 }
 
-$editor-pane-min-height: 28rem;
+// Make scrollbars look good in dark mode for webkit browsers
+// (Firefox already looks good in dark mode)
+::-webkit-scrollbar {
+  width: 0.75em;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.8);
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(100, 100, 100, 0.4);
+}
+
+$monokai-bg: #272822;
+$monokai-comment: #797979;
+
 
 .front-page-sandbox {
+  $editor-pane-min-height: 28rem;
   min-height: $editor-pane-min-height;
-
   .editor-wrapper {
     // For some reason I have to explicitly set this height.
     // 100% doesn't work. I think it's some weird interaction
@@ -72,9 +93,6 @@ $editor-pane-min-height: 28rem;
     }
   }
 }
-
-$monokai-bg: #272822;
-$monokai-comment: #797979;
 $editor-height: 60vh;
 
 .full-page-sandbox {
