@@ -55,15 +55,15 @@
       <div class="col">
         <h3>Cheat Sheet</h3>
         <ul>
-          <li>Inline choice: <code>{(X), (Y)}</code> → <i>X</i> or <i>Y</i></li> 
-          <li>With weights: <code>{(X) 70, (Y)}</code> → <i>X</i> (70% of the time) or <i>Y</i> (30% of the time)</li> 
+          <li>Inline choice: <code>{(X), (Y)}</code> → <i>X</i> or <i>Y</i></li>
+          <li>With weights: <code>{(X) 70, (Y)}</code> → <i>X</i> (70% of the time) or <i>Y</i> (30% of the time)</li>
           <li>Nested choice: <code>{(X), (nested {(Y), (Z)})}</code> → <i>X</i> or (<i>nested Y</i> or <i>nested Z</i>)</li>
-          <li>References: <code>{Name: (Alice), (Bob)} tied {@Name: 0 -> (her), 1 -> (his)} shoe.</code></li> 
+          <li>References: <code>{Name: (Alice), (Bob)} tied {@Name: 0 -> (her), 1 -> (his)} shoe.</code></li>
         </ul>
         <p>
           See <a href="/docs/the-language-language-overview">the docs</a> for more.
         </p>
-        
+
       </div>
       <div class="col editor-settings">
         <h4>Settings</h4>
@@ -151,6 +151,7 @@ Empty yet structured,
  editor.focus();
 
  let activeOutput = 1;
+ let activeRefreshTimeout = null;
  function rotateBmlOutput() {
    let oldOutputTarget = document.getElementById('bml-target-' + activeOutput);
    oldOutputTarget.style.opacity = 0;
@@ -165,9 +166,14 @@ Empty yet structured,
    outputTarget.style.opacity = 1;
 
    let interval = document.getElementById('bml-refresh-rate-sec').valueAsNumber * 1000;
-   setTimeout(rotateBmlOutput, interval);
+   activeRefreshTimeout = setTimeout(rotateBmlOutput, interval);
  }
  rotateBmlOutput();
+
+ document.getElementById('bml-refresh-rate-sec').oninput = () => {
+   clearTimeout(activeRefreshTimeout);
+   rotateBmlOutput()
+ };
 </script>
 
 {% endraw %}
