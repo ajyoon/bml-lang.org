@@ -20,6 +20,13 @@
 {% block body %}{% set page_class="dark" %}{% endblock body %}
 
 {% block content %}
+<script>
+ // Remove the dark/light mode toggle
+ // This *should* be done at the template level, but Adidoks is structured
+ // in such a way this is very awkward to do, so hack around it.
+ document.getElementById('mode').style.display = 'none';
+</script>
+
 <div class="full-page-sandbox">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-start">
