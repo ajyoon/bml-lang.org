@@ -14,6 +14,7 @@
   <script src="/js/bml.bundle.js"></script>
   <script src="/js/ace/ace.js"></script>
   <script src="/js/relaxed-json.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
 {% endblock page_specific_head_tags %}
 
 <!-- Auto-enable dark mode on this page -->
@@ -30,14 +31,20 @@
 <div class="full-page-sandbox">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-start">
-      <div class="col-md-16 col-lg-9 editor-wrapper">
+      <div class="col-9 editor-wrapper">
         <div id="editor">
         </div>
       </div>
-      <div class="col-md-16 col-lg-7">
+      <div class="col-7">
+        <!-- position relative -->
         <div class="bml-output-wrapper">
-          <div class="bml-output-target" id="bml-target-1"></div>
-          <div class="bml-output-target" id="bml-target-2"></div>
+          <!-- position absolute -->
+          <div class="bml-output-target-wrapper">
+            <div class="bml-output-target" id="bml-target-1"></div>
+          </div>
+          <div class="bml-output-target-wrapper">
+            <div class="bml-output-target" id="bml-target-2"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -58,11 +65,32 @@
     </div>
   </div>
 
+  <div class="modal fade" id="mobile-warning" tabindex="-1" aria-labelledby="mobile-warning-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mobile-warning-label">Window too small</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This live editor doesn't work well on smaller devices. For the intended experience, please consider using this tool from a desktop browser.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 {% raw %}
-<!-- Code for live-regenerating BML example -->
 <script>
+ if (window.innerWidth < 960) {
+   let modal = new bootstrap.Modal(document.getElementById('mobile-warning'));
+   modal.show();
+ }
+
  let bmlSrc = `{#bellows: (a bellows), (an accordion)}
 {
   (Are not Heaven and Earth like {@bellows}?),

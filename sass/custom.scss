@@ -79,7 +79,7 @@ $monokai-comment: #797979;
 .full-page-sandbox {
   height: 100vh;
   background: $monokai-bg;
-  
+
   > .container-fluid {
     border-bottom: 1px solid $monokai-comment;
   }
@@ -99,23 +99,25 @@ $monokai-comment: #797979;
   }
 
   .bml-output-wrapper {
-    min-height: 6rem;
+    height: 80vh;
     position: relative;
   }
 
-  .bml-output-target {
+  .bml-output-target-wrapper {
+    display: flex;
+    align-items: center;
+
     position: absolute;
     top: 0;
-    right: 0.5rem; // to align with lao tzu source
+    right: 0;
     bottom: 0;
     left: 0;
-    transition: opacity 0.5s ease-in;
-
-    > p {
-      margin-bottom: 0;
-    }
   }
-  
+
+  .bml-output-target {
+    transition: opacity 0.5s ease-in;
+  }
+
   .editor-help {
     padding: 1rem;
     input {
@@ -129,12 +131,20 @@ $monokai-comment: #797979;
       -moz-appearance: textfield;
       appearance: textfield;
     }
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
     }
     #bml-render-settings {
       width: 20rem;
+    }
+  }
+
+  // Adidoks doesn't dark-theme modals, so patch the bg color on the
+  // modal with the main dark mode bg color
+  .modal-content {
+    * {
+      color: var(--bs-dark);
     }
   }
 }
