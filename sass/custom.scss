@@ -93,6 +93,20 @@ $monokai-comment: #797979;
     }
   }
 }
+
+// Make the whole page monokai on /sandbox
+
+// .sandbox-page {
+//   background: $monokai-bg !important;
+
+// }
+
+// header {
+//   .sandbox-page & {
+//     background: $monokai-bg !important;
+//   }
+// }
+
 $editor-height: 60vh;
 
 .full-page-sandbox {

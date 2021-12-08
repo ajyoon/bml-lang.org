@@ -18,7 +18,7 @@
 {% endblock page_specific_head_tags %}
 
 <!-- Auto-enable dark mode on this page -->
-{% block body %}{% set page_class="dark" %}{% endblock body %}
+{% block body %}{% set page_class="dark sandbox-page" %}{% endblock body %}
 
 {% block content %}
 <script>
@@ -136,6 +136,7 @@ Empty yet structured,
  editor.session.setMode("ace/mode/bml");
  editor.clearSelection();
  editor.renderer.setPadding(10);
+ editor.renderer.setScrollMargin(10,10);
  editor.moveCursorTo(0, 0);
  editor.setOptions({
    showPrintMargin: false,
