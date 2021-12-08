@@ -142,15 +142,17 @@ document. They may be used by modes in `rules` and in [inline commands](@/docs/t
 
 Replacement functions have the following signature:
 
+```ts
     function replacementFunction(
-        match: String[], string: String, index: Number) -> String
+        match: string[], document: string, index: number): string
+```
 
 -   `match` is a [regex
     match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
     array. Most often, you'll just want to access `match[0]` since it
     contains the entire matched text. In the case of
     [inline commands](@/docs/the-language/language-overview.md#inline-commands), this will always be simply `['']`.
--   `string` is the entire raw text of the bml document, including the
+-   `document` is the entire raw text of the bml document, including the
     prelude.
 -   `index` is the index in `string` where the match was found.
 

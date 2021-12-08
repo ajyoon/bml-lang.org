@@ -38,7 +38,7 @@ url = "/docs/"
 weight = 10
 
 [[extra.menu.main]]
-name = "Try"
-section = "try"
-url = "/try/"
+name = "Sandbox"
+section = "sandbox"
+url = "/sandbox/"
 weight = 20
