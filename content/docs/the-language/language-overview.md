@@ -36,7 +36,7 @@ a basic example:
 ```bml
 eval {
     provide({
-        settings: { version: '0.0.24' },
+        settings: { version: '0.0.25' },
         someFunc: (match, string, matchIndex) => {
             return 'some replacement';
         }
@@ -44,7 +44,7 @@ eval {
 }
 
 mode someMode {
-    (x) as (y)
+    (x) as {(y)}
 }
 ```
 
@@ -189,8 +189,8 @@ regular expression delimited by slashes (JS style).
 
 ```bml
 mode someModeName {
-    (a matcher) as (foo)
-    /a regex matcher/ as (foo)
+    (a matcher) as {(foo), (bar)}
+    /a regex matcher/ as {(foo), (bar)}
 }
 ```
 
@@ -199,12 +199,15 @@ example equivalent to:
 
 ```bml
 mode someModeName {
-    (a matcher), /a regex matcher/ as (foo)
+    (a matcher), /a regex matcher/ as {(foo), (bar)}
 }
 ```
 
-Replacements can be literal strings or references to replacement
-[replacement functions](@/docs/the-language/language-overview.md#replacement-functions) defined in eval blocks.
+There are three types of replacements:
+1. Strings, denoted by parentheses
+2. The `match` keyword, which is a stand-in for "whatever text the rule matched."
+3. A user-defined [replacement function](@/docs/the-language/language-overview.md#replacement-functions) defined in the document's [eval block](@/docs/the-language/language-overview.md#eval).
+
 Replacement functions references must be prefaced with the keyword
 `call`. Here we have a rule which matches on all words starting with the
 letter *A* and uses a replacement function to capitalize the word.
@@ -220,15 +223,27 @@ eval {
 }
 
 mode capitalizingWordsStartingWithA {
-    /\s[aA](\w?)/ as call capitalize
+    /\s[aA](\w?)/ as {call capitalize}
 }
 ```
 
-Multiple possible replacements can be specified. The unmodified matched
-text is always included as a possible replacement.
+The `match` keyword creates a replacement option to leave the matched
+text untouched. To make the above code only *sometimes* capitalize
+words starting with the letter *A*, we can add a `match` replacement
+option.
 
 ```bml
-(foo) as (bar), call baz
+mode example {
+    /\s[aA](\w?)/ as {match, call capitalize}
+}
+```
+
+#### Weights
+
+Multiple possible replacements can be specified.
+
+```bml
+(foo) as {(bar), call baz}
 ```
 
 A weighted random choice is taken between all replacement options. By
@@ -236,13 +251,12 @@ default, all options are equally likely to be chosen, but this can be
 overridden by providing numerical weights to replacements.
 
 ```bml
-(foo) as (bar) 40
+(foo) as {(bar), call baz 50}
 ```
 
 The weights given are considered to be percentages of all possible
 outcomes. All remaining probability is distributed equally among all
-options which have no explicit value (always including the unmodified
-matched text as an option).
+options which have no explicit value.
 
 <table>
 <colgroup>
@@ -255,32 +269,23 @@ matched text as an option).
 <td>meaning</td>
 </tr>
 <tr>
-<td><code>(foo) as (bar)</code></td>
-<td>"foo" 50% of the time, "bar" 50% of the time.</td>
+<td><code>(foo) as {(bar)}</code></td>
+<td>"bar" 100% of the time</td>
 </tr>
 <tr>
-<td><code>(foo) as (bar) 60</code></td>
-<td>"foo" 40% of the time, "bar" 60% of the time</td>
+<td><code>(foo) as {(bar) 60}</code></td>
+<td>"bar" 100% of the time; notice how 60% still means 100% because no alternatives are provided.</td>
 </tr>
 <tr>
-<td><code>(foo) as (bar) 50, (baz)</code></td>
-<td>"foo" 25% of the time, "bar" 50% of the time, "baz" 25% of the time. Notice how the remaining unclaimed 50% of probability is distributed evenly among all other options.</td>
+<td><code>(foo) as {(bar) 50, (baz), match}</code></td>
+<td>"foo" 25% of the time, "bar" 50% of the time, "baz" 25% of the time; notice how the remaining unclaimed 50% of probability is distributed evenly among all other options.</td>
 </tr>
 <tr>
-<td><code>(foo) as (bar) 40, call someFunc 60</code></td>
-<td>"bar" 40% of the time, call <code>someFunc</code> 60% of the time. Note that, because 100% of probability has been claimed, "foo" will never be chosen.</td>
+<td><code>(foo) as (bar) 100, (baz) 900</code></td>
+<td>"bar" 10% of the time, "baz" 90% of the time; if the sum of all weights exceeds 100%, the weights are mapped proportionally back to 100%. This is not recommended.</td>
 </tr>
 </tbody>
 </table>
-
-If the sum of all weights is greater than or equal to `100`, the
-unmodified matched text will never be chosen.
-
-{% note() %}
-If the sum of all weights exceeds 100, the values will be normalized
-such that their sum is 100. For example, `(foo) as (bar) 100, (baz) 900`
-is equivalent to `(foo) as (bar) 10, (baz) 90`
-{% end %}
 
 # the body {#body-section}
 
@@ -442,7 +447,7 @@ Rules are also evaluated on chosen text, for instance:
 
 ```bml
 mode exampleMode {
-  (foo) as (bar) 50, (baz) 25
+  (foo) as {(bar) 50, (baz) 25}
 }
 
 some outer text with {

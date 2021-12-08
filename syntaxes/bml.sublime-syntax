@@ -42,6 +42,7 @@ contexts:
           pop: true
         - include: replacer
         - include: callCommand
+        - include: match
         - include: useCommand
         - include: number
         - include: comma
@@ -107,9 +108,8 @@ contexts:
         - include: body
   rule:
     - include: regexMatcher
+    - include: commands
     - include: replacer
-    - include: callCommand
-    - include: number
     - include: as
     - include: comma
   useCommand:
