@@ -122,6 +122,7 @@ Empty yet structured,
    activeOutput = activeOutput === 1 ? 2 : 1;
    let outputTarget = document.getElementById('bml-target-' + activeOutput);
    let newEditorValue = editor.getValue();
+   console.log(newEditorValue);
    if (newEditorValue !== bmlSrc) {
      let laoTzuSourceEl = document.getElementById('lao-tzu-5-source');
      laoTzuSourceEl.style.opacity = 0

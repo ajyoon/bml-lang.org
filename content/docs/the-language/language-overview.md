@@ -36,7 +36,7 @@ a basic example:
 ```bml
 eval {
     provide({
-        settings: { version: '0.0.25' },
+        settings: { version: '0.0.27' },
         someFunc: (match, string, matchIndex) => {
             return 'some replacement';
         }
