@@ -24,10 +24,10 @@ contexts:
     - match: 'call\s+(\w*)'
       scope: keyword.bml
       captures:
-        1: entity.name.function.bml
+        1: string.bml
   choiceName:
     - match: '[@#]?(\w+):?'
-      scope: entity.name.function.bml
+      scope: string.bml
   comma:
     - match: ','
       scope: keyword.control.bml
@@ -97,13 +97,13 @@ contexts:
     - match: (\()
       comment: Since it's really important to make parens differ from braces, use some arbitrary other common scope name
       captures:
-        1: entity.name.type.bml
+        1: entity.name.function
       push:
         - meta_scope: punctuation.bml
         - meta_content_scope: text.markup.bml
         - match: (\))
           captures:
-            1: entity.name.type.bml
+            1: entity.name.function
           pop: true
         - include: body
   rule:

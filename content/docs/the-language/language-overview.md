@@ -243,7 +243,9 @@ mode example {
 Multiple possible replacements can be specified.
 
 ```bml
-(foo) as {(bar), call baz}
+mode example {
+    (foo) as {(bar), call baz}
+}
 ```
 
 A weighted random choice is taken between all replacement options. By
@@ -251,7 +253,9 @@ default, all options are equally likely to be chosen, but this can be
 overridden by providing numerical weights to replacements.
 
 ```bml
-(foo) as {(bar), call baz 50}
+mode example {
+    (foo) as {(bar), call baz 50}
+}
 ```
 
 The weights given are considered to be percentages of all possible

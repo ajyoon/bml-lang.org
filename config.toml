@@ -21,6 +21,8 @@ smart_punctuation = true
 highlight_code = true
 
 extra_syntaxes = ["syntaxes"]
+# Switch to this when upgrading to zola 0.15
+# extra_syntaxes_and_themes = ["syntaxes"]
 
 highlight_theme = "monokai"
 
