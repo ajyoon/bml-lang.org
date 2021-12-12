@@ -14,12 +14,20 @@ contexts:
   as:
     - match: \bas\b
       scope: keyword.bml
+  blockComment:
+    - match: /\*
+      push:
+        - meta_scope: comment.block.bml
+        - match: \*/
+          pop: true
   body:
     - include: escape
     - include: literalBlock
     - include: eval
     - include: mode
     - include: commands
+    - include: lineComment
+    - include: blockComment
   callCommand:
     - match: 'call\s+(\w*)'
       scope: keyword.bml
@@ -48,6 +56,8 @@ contexts:
         - include: comma
         - include: arrow
         - include: choiceName
+        - include: lineComment
+        - include: blockComment
   escape:
     - match: \\
       scope: keyword.bml
@@ -61,6 +71,9 @@ contexts:
       escape: '^(\})$'
       escape_captures:
         0: keyword.control.bml
+  lineComment:
+    - match: //.*
+      scope: comment.line.bml
   literalBlock:
     - match: '(?<!\\)(\[\[)'
       captures:
@@ -82,6 +95,8 @@ contexts:
             1: keyword.control.bml
           pop: true
         - include: rule
+        - include: lineComment
+        - include: blockComment
   number:
     - match: (\d+(\.\d+)?)|(\.\d+)
       scope: constant.numeric.bml
@@ -112,6 +127,8 @@ contexts:
     - include: replacer
     - include: as
     - include: comma
+    - include: lineComment
+    - include: blockComment
   useCommand:
     - match: use\s+(\w+)
       scope: keyword.bml

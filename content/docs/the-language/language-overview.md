@@ -185,7 +185,7 @@ During rendering, all matchers for the active rule are tested across the
 using the replacer defined in the corresponding rule.
 
 A matcher can be a simple string (any text enclosed in parentheses) or a
-regular expression delimited by slashes (JS style).
+[Javascript regular expression delimited by slashes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 
 ```bml
 mode someModeName {
@@ -294,7 +294,7 @@ options which have no explicit value.
 # the body {#body-section}
 
 The body of a BML document is just normal text, aside from
-[commands](@/docs/the-language/language-overview.md#inline-commands) and literal blocks. BML considers the body to
+[commands](@/docs/the-language/language-overview.md#inline-commands) and [literal blocks](@/docs/the-language/language-overview.md#literal-blocks). BML considers the body to
 have begun at its first encounter of non-prelude-like text.
 
 ## literal blocks {#literal-blocks}
