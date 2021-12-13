@@ -12,11 +12,6 @@ code {
   }
 }
 
-// Needed to work around https://github.com/aaranxu/adidoks/issues/23
-code {
-  background: inherit;
-}
-
 // Make scrollbars look good in dark mode for webkit browsers
 // (Firefox already looks good in dark mode)
 ::-webkit-scrollbar {
