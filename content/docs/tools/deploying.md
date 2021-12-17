@@ -24,7 +24,7 @@ cross-site-scripting attacks on sites that, for example, might support
 The easiest way to pull BML into your website is using the [jsdelivr](https://www.jsdelivr.com/) hosted artifacts. Simply add this tag to the `<head>` section of your page:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bml@0.0.27/dist/bml.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bml@0.0.30/dist/bml.bundle.js"></script>
 ```
 
 Once loaded, `bml` is exposed by a single method which takes a string of
@@ -39,7 +39,7 @@ markup and returns a rendered output string.
 
 {% note() %}
 While CDN-hosted libraries are convenient, many prefer to self-host
-their dependencies for security, privacy, and reliability reasons. You can do this by downloading the bundle from [its source on the BML repo](https://github.com/ajyoon/bml/raw/master/dist/bml.bundle.min.js), or building it yourself below, and hosting it from your website directly.
+their dependencies for security, privacy, and reliability reasons. You can do this by downloading the bundle from [its source on the BML repo](https://github.com/ajyoon/bml/raw/master/dist/bml.bundle.js), or building it yourself below, and hosting it from your website directly.
 {% end %}
 
 ## Building artifacts yourself
@@ -52,12 +52,12 @@ npm install
 npm run build
 ```
 
-This will produce a compiled and polyfilled file at `dist/bml.bundle.min.js`
+This will produce a compiled and polyfilled file at `dist/bml.bundle.js`
 ready to be pulled into your site and used in most browsers we know
 about.
 
 ```html
-<script src="/path/to/bml.bundle.min.js"></script>
+<script src="/path/to/bml.bundle.js"></script>
 ```
 
 ## Using through an NPM Dependency
@@ -68,7 +68,7 @@ BML can be added as a dependency in your site's `package.json`.
 ```json
 {
   "dependencies": {
-    "bml": "0.0.27"
+    "bml": "0.0.30"
   },
 }
 ```

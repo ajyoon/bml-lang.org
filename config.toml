@@ -20,9 +20,7 @@ smart_punctuation = true
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
 
-extra_syntaxes = ["syntaxes"]
-# Switch to this when upgrading to zola 0.15
-# extra_syntaxes_and_themes = ["syntaxes"]
+extra_syntaxes_and_themes = ["syntaxes"]
 
 highlight_theme = "monokai"
 

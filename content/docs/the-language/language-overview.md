@@ -36,7 +36,7 @@ a basic example:
 ```bml
 eval {
     provide({
-        settings: { version: '0.0.27' },
+        settings: { version: '0.0.30' },
         someFunc: (match, string, matchIndex) => {
             return 'some replacement';
         }
@@ -159,12 +159,11 @@ Replacement functions have the following signature:
 The function should return a string which is to replace the text found
 at the point.
 
-{% warning() %}
 Any replacement function which might use random elements should use
-the [provided eval API](@/docs/the-language/eval-api.md) for random operations. Direct
-invocation of `Math.random()` will undermine bml's ability
-to create reproducible document versions pinned to random seeds.
-{% end %}
+the [provided eval API](@/docs/the-language/eval-api.md) for random
+operations. Direct invocation of `Math.random()` will undermine BML's
+ability to create reproducible document versions pinned to random
+seeds.
 
 ## modes {#modes}
 
