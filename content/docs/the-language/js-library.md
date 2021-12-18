@@ -50,7 +50,7 @@ the following properties:
 <tr>
 <td><code>whitespaceCleanup</code></td>
 <td><code>true</code></td>
-<td>Clean up the whitespace in the output document. This is useful for cleaning up unintentional whitespace left over from BML directives by 1) removing all trailing whitespace in every line; 2) collapsing all runs of over one blank line into just one; 3) removing blank lines at the start of the document; 4) ensuring the text ends with a single line break. Note that this is generally not necessary when markdown is enabled, but it can't hurt unless you use markdown's trailing whitespace features.</td>
+<td>Clean up the whitespace in the output document. This is useful for cleaning up unintentional whitespace left over from BML directives by 1) removing all trailing whitespace in every line; 2) collapsing all runs of over one blank line into just one; 3) similarly collapsing all runs of spaces in the middle of lines; 4) removing blank lines at the start and end of the document; 5) ensuring the text ends with a single line break. Note that this is generally not necessary when markdown is enabled, but it can't hurt unless you use markdown's trailing whitespace features.</td>
 </tr>
 </tbody>
 </table>
