@@ -20,6 +20,8 @@
 
 <link rel="stylesheet" href="/custom.css"/>
 
+<script src="/js/bml.bundle.js"></script>
+
 {% block page_specific_head_tags %}
 {% endblock page_specific_head_tags %}
 
@@ -49,5 +51,7 @@
   {{ macros_js::javascript() }}  
   
   {% include "analytics.html" %}
+  
+  {% include "bml_snippet_setup.html" %}
 </body>
 </html>

@@ -12,9 +12,6 @@ build_search_index = true
 
 theme = "adidoks"
 
-smart_punctuation = true
-
-
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -23,6 +20,8 @@ highlight_code = true
 extra_syntaxes_and_themes = ["syntaxes"]
 
 highlight_theme = "monokai"
+
+smart_punctuation = true
 
 [extra]
 # Put all your custom variables here

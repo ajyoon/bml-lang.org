@@ -1,0 +1,20 @@
+<div class="bml-snippet-wrapper">
+  {{ body | markdown | safe }}
+  <div class="bml-snippet-output-wrapper">
+    <div class="container-fluid m-0 p-0">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-auto">
+          <div class="bml-snippet-output-label">
+            output:
+          </div>
+          <div class="bml-snippet-output-target">
+          </div>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-secondary">regenerate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

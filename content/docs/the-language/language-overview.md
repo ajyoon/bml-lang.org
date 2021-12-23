@@ -344,9 +344,16 @@ this text will be processed using `someMode`
 A weighted choice may be declared inline using the same syntax for the
 replacement component of [rules](@/docs/the-language/language-overview.md#rules):
 
+{% bml_snippet() %}
+```bml
+eval {
+    provide({someFunc: () => '[someFunc result]'});
+}
+```
 ```bml
 this is {(some text) 30, (an example), call someFunc}
 ```
+{% end %}
 
 30% of the time, this will be rendered as *"this is some text"*, 35% of
 the time as *"this is an example"*, and 35% of the time `someFunc` will
@@ -365,32 +372,29 @@ single-choice block:
 
 ### references {#references}
 
-For more context-dependent text, it can be necessary for some choices to
-depend on the results of previously made choices. BML experimentally
-supports this with a system of references and back-references.
+For more context-dependent text, it can be necessary for some choices
+to depend on the results of previously made choices. BML supports this
+with a system of references and back-references.
 
-Any [choose command](@/docs/the-language/language-overview.md#choose-commands) can be prefixed with an
-identifier like so:
+Any [choose command](@/docs/the-language/language-overview.md#choose-commands) can be prefixed with an identifier. This identifier can then be referred back to using a reference command mapping the result from the original choice to new text by 0-based index:
 
+{% bml_snippet() %}
 ```bml
 {SomeChoiceIdentifier: (Alice), (Bob)} went to the store.
-```
-
-This identifier can then be referred back to using a reference command
-mapping the result from `SomeChoiceIdentifier` to other text by index:
-
-```bml
 {@SomeChoiceIdentifier: 0 -> (She), 1 -> (He)} bought some tofu.
 ```
+{% end %}
 
 Reference commands need not exhaustively cover every possible outcome
 from the referred choice, but a fallback option should be provided as
 the final branch and without an associated index arrow:
 
+{% bml_snippet() %}
 ```bml
 {Name: (Alex), (Riley), (Alice)} went to the store.
 {@Name: 2 -> (She), (They)} bought some tofu.
 ```
+{% end %}
 
 Fallback options are also necessary if the referred choice was never
 made. This can happen if the referred choice is in a
@@ -402,29 +406,35 @@ will be inserted.
 
 Reference indexes can also be conveniently aggregated with commas:
 
+{% bml_snippet() %}
 ```bml
 {Name: (Alex), (Riley), (Alice), (Bob)} went to the store.
 {@Name: 0, 1 -> (They), 2 -> (She), 3 -> (He)} bought some tofu.
 ```
+{% end %}
 
 Bare references without any branches or fallback will unconditionally
 copy the output from the referred choice, including any nested
 evaluations executed within it:
 
+{% bml_snippet() %}
 ```bml
 {Name: (Alice), (Bob)}
 {@Name}
 ```
+{% end %}
 
 For complex documents, it can be helpful to define complex or frequently
 referenced choices separately from their use. This can be achieved by
 marking named choices as silent with a `#` identifier prefix. Silent
 choices are executed and tracked, but not inserted in the output text:
 
+{% bml_snippet() %}
 ```bml
 {#Name: (Alice), (Bob)}
 {@Name}
 ```
+{% end %}
 
 # nested evaluation {#nested-evaluation}
 
@@ -436,9 +446,11 @@ evaluated on them as well.
 
 For instance, we could set up nested choices like so:
 
+{% bml_snippet() %}
 ```bml
 outer with {(inner 1), (inner 2 with {(nested 1!), (nested 2!)})}
 ```
+{% end %}
 
 In effect, this results in a choice tree with the following possible
 paths:
@@ -459,27 +471,31 @@ outer with {
 
 But be sure to include those line breaks in the braces part of the
 declaration, not the inner text in parentheses, since those will be
-interpreted as part of the replacement text.
+interpreted as part of the replacement text. This can also be avoided
+using [visual line breaks](#escapes).
 
 Rules are also evaluated on chosen text, for instance:
 
+{% bml_snippet() %}
 ```bml
 mode exampleMode {
-  (foo) as {(bar) 50, (baz) 25}
+  (foo) as {(bar) 50, (baz) 25, match}
 }
+{use exampleMode}
 
 some outer text with {
   (inner without magic word),
   (inner with magic word foo)}
 ```
+{% end %}
 
 Which can be rendered as:
 
 -   some outer text with inner without magic word
 -   some outer text with inner with magic word bar
 -   some outer text with inner with magic word baz
--   some outer text with inner with magic word foo \[no-op rule branch
-    taking the unclaimed probability of 25% in the rule\]
+-   some outer text with inner with magic word foo \[`match` rule
+    branch taking the unclaimed probability of 25% in the rule\]
 
 Note that nested evaluation *does not* occur on text inserted by
 function calls or by text left untouched by "no-op" rule branches.
@@ -489,18 +505,22 @@ function calls or by text left untouched by "no-op" rule branches.
 Special characters like brackets and braces can be inserted literally by
 prefixing them with a backslash escape:
 
+{% bml_snippet() %}
 ```bml
-\{these braces will be inserted literally\}
+\{these braces will be inserted literally}
 ```
+{% end %}
 
 Escapes can also be used to insert **visual line breaks**. By making the
 last character in a line a backslash, the line break and any following
 whitespace is collapsed into a single whitespace. For example,
 
+{% bml_snippet() %}
 ```bml
 foo\
      bar
 ```
+{% end %}
 
 will be rendered as simply "foo bar". This is useful for visually
 organizing and indenting complex text, especially in nested choices.

@@ -1,5 +1,10 @@
 // Custom styles on top of Adidoks + Bootstrap
 
+$monokai-bg: #272822;
+$monokai-comment: #797979;
+$monokai-fg: rgb(248, 248, 242);
+
+
 .info-card {
   h4 {
     margin-top: 0;
@@ -9,6 +14,25 @@
 code {
   ::selection {
     background: #334444dd;
+  }
+}
+
+.bml-snippet-wrapper {
+  margin: 2rem 0;
+  background: $monokai-bg;
+  color: $monokai-fg;
+  border-radius: 0.25rem;
+
+  pre {
+    margin: 0;
+  }
+
+  .bml-snippet-output-wrapper {
+    border-top: 1px solid $monokai-comment;
+    padding: 1.25rem 1.5rem;
+    .bml-snippet-output-label {
+      color: $monokai-comment;
+    }
   }
 }
 
@@ -30,10 +54,6 @@ code {
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(100, 100, 100, 0.4);
 }
-
-$monokai-bg: #272822;
-$monokai-comment: #797979;
-
 
 .front-page-sandbox {
   $editor-pane-min-height: 28rem;
