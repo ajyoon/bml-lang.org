@@ -5,15 +5,33 @@ $monokai-comment: #797979;
 $monokai-fg: rgb(248, 248, 242);
 
 
-.info-card {
+.card {
   h4 {
     margin-top: 0;
+  }
+  > p:last-child {
+    margin-bottom: 0;
   }
 }
 
 code {
   ::selection {
     background: #334444dd;
+  }
+}
+
+main {
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Make inline code snippets not spaced weird
+p {
+  code {
+    padding: 0;
   }
 }
 

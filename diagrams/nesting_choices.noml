@@ -1,0 +1,10 @@
+[<start>st] -> [I have]
+[I have] -> [something]
+[I have] -> [nothing]
+[something] -> [to say]
+[nothing] -> [to say]
+
+[st] -> [John Cage wrote about Silence]
+
+[to say] -> [<end>end]
+[John Cage wrote about Silence] -> [end]
