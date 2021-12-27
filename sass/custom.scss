@@ -181,6 +181,7 @@ $editor-height: 60vh;
 
   .bml-output-target {
     transition: opacity 0.5s ease-in;
+    white-space: pre;
   }
 
   .editor-help {

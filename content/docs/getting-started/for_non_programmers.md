@@ -26,7 +26,7 @@ Hello, world!
 ```
 {% end %}
 
-Unlike the word processors typically used by writers which have opaque file formats (e.g. `.doc`, `.pages`) that require editing in specific programs, BML documents are written just as you see above and saved in `.bml` files. The BML interpreter is the program responsible for executing the document's chance operations and rendering new versions of your document for the world. That interpreter can be used offline or embedded on websites like it is here.
+Unlike the word processors typically used by writers which have opaque file formats (e.g. `.doc`, `.pages`) that require editing in specific programs, BML documents are written just as you see above and saved verbatim in `.bml` files. The BML interpreter is the program responsible for executing the document's chance operations and rendering new versions of your document for the world. That interpreter can be used offline or embedded on websites like it is here.
 
 {% try_it() %}
 Open [the sandbox](/sandbox) and try writing some plain old text.
@@ -90,12 +90,17 @@ The contents of parentheses-delimited choices can be any BML text, which means w
 ```
 {% end %}
 
-You can think of choices like these as graphs with points where possibilities branch and come back together. We can visualize the branching structure of choices by sketching out diagrams like these:
+You can think of choices as graphs with points where possibilities branch and come back together. We can visualize the branching structure of choices by sketching out diagrams like these:
 
 ![A diagram of the tree structure of the previous code snippet](/img/diagrams/nesting_choices.svg)
 
 {% try_it() %}
-We've covered a lot of ground! Before we go into more advanced concepts, practice what you've learned in the sandbox. Try writing text with simple, weighted, and nesting choices.
+We've covered a lot of ground! The techniques you've learned are already enough to start writing documents rich with possibility. In fact, this is practically everything BML's original author used to write [a whole book of chance poetry](https://weareinvitedtoclimb.org/)! Before we go into more advanced concepts, open up [the sandbox](/sandbox) and practice what you've learned. Try writing text with simple, weighted, and nesting choices.
+
+- Choices can be nested arbitrarily deeply. Try writing a doubly nested one.
+- Play around with line breaks and indentation in choices. Notice which placements cause those formatting changes to be included in or omitted from the output text.
+- Try writing an easter egg choice branch that only appears for 0.1% of readers.
+- Review the above graph diagram. How many possible paths are there through it? This is the number of unique BML outputs from the corresponding example.
 {% end %}
 
 ### References
@@ -120,7 +125,7 @@ and I am saying {@thing: 0 -> (them), 1 -> (it)}.
 The numbers to the left of the arrows are indexes referring to the branch taken in the referred choice block. Here, the `0` branch will be taken if the `thing` choice took its first branch. Similarly, the `1` branch will be taken if the referred choice took its second branch.
 
 {% note() %}
-References use 0-based indexing. This is likely to be a bit confusing for non-programmers, but it is necessary to harmonize with the Javascript code that can be embedded in documents. 0-based indexes can be thought of as offsets from the starting position.
+References use 0-based indexing. This is likely to be a bit confusing for non-programmers, but it is necessary to harmonize with the Javascript code that can be embedded in documents. It may be helpful to think of 0-based indexes are offsets from the starting position.
 {% end %}
 
 Mappings can be many-to-one---that is, multiple choice indexes can be associated with a single result. Where you would write a single choice index, simply write a comma-separated list of them.
