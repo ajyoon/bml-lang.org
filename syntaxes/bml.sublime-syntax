@@ -11,9 +11,6 @@ contexts:
   arrow:
     - match: '->'
       scope: keyword.control.bml
-  as:
-    - match: \bas\b
-      scope: keyword.bml
   blockComment:
     - match: /\*
       push:
@@ -50,7 +47,7 @@ contexts:
           pop: true
         - include: replacer
         - include: callCommand
-        - include: match
+        - include: kwMatch
         - include: useCommand
         - include: number
         - include: comma
@@ -71,6 +68,9 @@ contexts:
       escape: '^(\})$'
       escape_captures:
         0: keyword.control.bml
+  kwMatch:
+    - match: \bmatch\b
+      scope: keyword.bml
   lineComment:
     - match: //.*
       scope: comment.line.bml
@@ -125,12 +125,12 @@ contexts:
     - include: regexMatcher
     - include: commands
     - include: replacer
-    - include: as
+    - include: arrow
     - include: comma
     - include: lineComment
     - include: blockComment
   useCommand:
-    - match: use\s+(\w+)
+    - match: 'use\s+(\w+)'
       scope: keyword.bml
       captures:
         1: entity.name.type.bml

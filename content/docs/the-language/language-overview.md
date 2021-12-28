@@ -44,7 +44,7 @@ eval {
 }
 
 mode someMode {
-    (x) as {(y)}
+    (x) -> {(y)}
 }
 ```
 
@@ -203,8 +203,8 @@ A matcher can be a simple string (any text enclosed in parentheses) or a
 
 ```bml
 mode someModeName {
-    (a matcher) as {(foo), (bar)}
-    /a regex matcher/ as {(foo), (bar)}
+    (a matcher) -> {(foo), (bar)}
+    /a regex matcher/ -> {(foo), (bar)}
 }
 ```
 
@@ -213,7 +213,7 @@ example equivalent to:
 
 ```bml
 mode someModeName {
-    (a matcher), /a regex matcher/ as {(foo), (bar)}
+    (a matcher), /a regex matcher/ -> {(foo), (bar)}
 }
 ```
 
@@ -237,7 +237,7 @@ eval {
 }
 
 mode capitalizingWordsStartingWithA {
-    /\s[aA](\w?)/ as {call capitalize}
+    /\s[aA](\w?)/ -> {call capitalize}
 }
 ```
 
@@ -248,7 +248,7 @@ option.
 
 ```bml
 mode example {
-    /\s[aA](\w?)/ as {match, call capitalize}
+    /\s[aA](\w?)/ -> {match, call capitalize}
 }
 ```
 
@@ -258,7 +258,7 @@ Multiple possible replacements can be specified.
 
 ```bml
 mode example {
-    (foo) as {(bar), call baz}
+    (foo) -> {(bar), call baz}
 }
 ```
 
@@ -268,7 +268,7 @@ overridden by providing numerical weights to replacements.
 
 ```bml
 mode example {
-    (foo) as {(bar), call baz 50}
+    (foo) -> {(bar), call baz 50}
 }
 ```
 
@@ -287,19 +287,19 @@ options which have no explicit value.
 <td>meaning</td>
 </tr>
 <tr>
-<td><code>(foo) as {(bar)}</code></td>
+<td><code>(foo) -> {(bar)}</code></td>
 <td>"bar" 100% of the time</td>
 </tr>
 <tr>
-<td><code>(foo) as {(bar) 60}</code></td>
+<td><code>(foo) -> {(bar) 60}</code></td>
 <td>"bar" 100% of the time; notice how 60% still means 100% because no alternatives are provided.</td>
 </tr>
 <tr>
-<td><code>(foo) as {(bar) 50, (baz), match}</code></td>
+<td><code>(foo) -> {(bar) 50, (baz), match}</code></td>
 <td>"foo" 25% of the time, "bar" 50% of the time, "baz" 25% of the time; notice how the remaining unclaimed 50% of probability is distributed evenly among all other options.</td>
 </tr>
 <tr>
-<td><code>(foo) as (bar) 100, (baz) 900</code></td>
+<td><code>(foo) -> (bar) 100, (baz) 900</code></td>
 <td>"bar" 10% of the time, "baz" 90% of the time; if the sum of all weights exceeds 100%, the weights are mapped proportionally back to 100%. This is not recommended.</td>
 </tr>
 </tbody>
@@ -479,7 +479,7 @@ Rules are also evaluated on chosen text, for instance:
 {% bml_snippet() %}
 ```bml
 mode exampleMode {
-  (foo) as {(bar) 50, (baz) 25, match}
+  (foo) -> {(bar) 50, (baz) 25, match}
 }
 {use exampleMode}
 
