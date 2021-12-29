@@ -94,9 +94,9 @@ contexts:
           captures:
             1: keyword.control.bml
           pop: true
-        - include: rule
         - include: lineComment
         - include: blockComment
+        - include: rule
   number:
     - match: (\d+(\.\d+)?)|(\.\d+)
       scope: constant.numeric.bml
