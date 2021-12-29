@@ -13,13 +13,23 @@ So far, we've discussed one-off choice blocks which introduce chance elements at
 {% bml_snippet() %}
 ```bml
 mode example {
-    (nothing) as {(something), match}
+    (nothing) -> {(something), match}
 }
 {use example}
 I have nothing to say
 ```
 {% end %}
 
-Modes are defined at the beginning of a document in its **prelude** section. They consist of a series of matchers and corresponding replacers.
+Modes are defined at the beginning of a document. They consist of a series of replacement rules associating matchers and choices. When a mode is active, BML searches for text which matches its rules. When a match is found, BML replaces the matched text with the executed result of its associated choice.
+
+Modes are defined with the following syntax:
+```bml
+mode modeName {
+    // A rule
+    (matcher 1), (matcher 2), ... -> {(choice), ...}
+    // Another
+    (matcher 3), (matcher 4), ... -> {(choice), ...}
+}
+```
 
 
