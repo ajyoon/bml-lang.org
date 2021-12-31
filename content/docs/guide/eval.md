@@ -73,3 +73,7 @@ foo
 {call test}
 ```
 {% end %}
+
+{% try_it() %}
+Try writing a custom function and mode which sometimes capitalizes the first letter of words starting with the letter *A*.
+{% end %}

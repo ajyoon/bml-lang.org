@@ -7,13 +7,12 @@ template = "docs/page.html"
 
 [extra]
 toc = true
-top = false
 +++
 
 The bml library is exposed by a single function:
 
-```js
-bml(sourceString, renderSettings)
+```ts
+bml(sourceString: string, renderSettings: object?)
 ```
 
 where `sourceString` is a single string holding the contents of a

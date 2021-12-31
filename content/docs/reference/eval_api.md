@@ -1,7 +1,7 @@
 +++
 title = "The Eval API"
 draft = false
-weight = 11
+weight = 10
 sort_by = "weight"
 template = "docs/page.html"
 
@@ -25,12 +25,8 @@ eval {
 {call customFunction}
 ```
 
-{% note() %}
-
 These functions are not part of the public API of bml. They can only be
 accessed in the `eval` block of bml scripts.
-
-{% end %}
 
 ------------------------------------------------------------------------
 

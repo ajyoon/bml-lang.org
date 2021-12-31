@@ -49,6 +49,21 @@ and I am saying {@thing: 0 -> (them), (it)}.
 ```
 {% end %}
 
+Fallbacks are necessary when referencing choices that may not always execute, like choices taken inside nested choices.
+
+{% bml_snippet() %}
+```bml
+{
+    (I have {thing: (something), (nothing)} to say),
+    (John Cage wrote about Silence)
+}
+{@thing:
+    0 -> (and I am not saying it),
+    1 -> (and I am saying it),
+    (and in his "Lecture on Nothing" he wrote this)}
+```
+{% end %}
+
 We can also ask BML to repeat the referenced choice result verbatim using a bare reference without any mappings. This is especially useful for copying nested choice results.
 
 {% bml_snippet() %}

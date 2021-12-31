@@ -81,7 +81,7 @@ eval {
 ```
 
 `eval` blocks can also access a very small "standard library" through
-the BML namespace. See [the Eval API reference](@/docs/the-language/eval-api.md).
+the BML namespace. See [the Eval API reference](@/docs/reference/eval_api.md).
 
 {% warning() %}
 Internally, `eval` blocks are executed inside a JS `new Function(...)`.
@@ -175,7 +175,7 @@ The function should return a string which is to replace the text found
 at the point.
 
 Any replacement function which might use random elements should use
-the [provided eval API](@/docs/the-language/eval-api.md) for random
+the [provided eval API](@/docs/reference/eval_api.md) for random
 operations. Direct invocation of `Math.random()` will undermine BML's
 ability to create reproducible document versions pinned to random
 seeds.

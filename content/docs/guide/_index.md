@@ -1,5 +1,5 @@
 +++
-title = "Getting Started"
+title = "Guide"
 template = "docs/section.html"
 sort_by = "weight"
 weight = 1

@@ -35,7 +35,7 @@ mode modeName {
 
 Simple matchers like these ask BML to look for literal full-text matches. Rules can have any number of matchers separated by commas. The replacement choice to the right of the `->` arrow is just like an inline choice, except it can also contain a special `match` choice which asks BML to leave the matched text as found.
 
-While rendering a document, BML has at most 1 active mode, starting with none. To change the active mode, use the `{use MODE_NAME}` command in your document.
+While rendering a document, BML has at most 1 active mode, starting with none. To change the active mode, use the `{use MODE_NAME}` command in your document. You can deactivate the active mode using the special `none` mode.
 
 {% bml_snippet() %}
 ```bml
@@ -45,6 +45,8 @@ mode example {
     (a), (b), (c) -> {(x), match 60}
 }
 {use example}
+a b c a b c a b c a b c
+{use none}
 a b c a b c a b c a b c
 ```
 {% end %}
