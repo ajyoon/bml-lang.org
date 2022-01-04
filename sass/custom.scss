@@ -29,10 +29,15 @@ main {
 }
 
 // Make inline code snippets not spaced weird
-p {
+p, li {
   code {
     padding: 0;
   }
+}
+
+.bml-output-target {
+  transition: opacity 0.5s ease-in;
+  white-space: pre-wrap;
 }
 
 .bml-snippet-wrapper {
@@ -74,7 +79,7 @@ p {
 }
 
 .front-page-sandbox {
-  $editor-pane-min-height: 28rem;
+  $editor-pane-min-height: 27rem;
   min-height: $editor-pane-min-height;
   .editor-wrapper {
     // For some reason I have to explicitly set this height.
@@ -94,7 +99,7 @@ p {
   }
 
   .bml-output-wrapper {
-    min-height: 6rem;
+    min-height: 8rem;
     position: relative;
   }
 
@@ -104,7 +109,6 @@ p {
     right: 0.5rem; // to align with lao tzu source
     bottom: 0;
     left: 0;
-    transition: opacity 0.5s ease-in;
 
     > p {
       margin-bottom: 0;
@@ -177,11 +181,6 @@ $editor-height: 60vh;
     right: 0;
     bottom: 0;
     left: 0;
-  }
-
-  .bml-output-target {
-    transition: opacity 0.5s ease-in;
-    white-space: pre;
   }
 
   .editor-help {

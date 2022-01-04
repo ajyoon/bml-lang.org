@@ -1,7 +1,7 @@
 +++
-title = "Getting Started"
+title = "Reference"
 template = "docs/section.html"
 sort_by = "weight"
-weight = 1
+weight = 4
 draft = false
 +++

@@ -12,7 +12,7 @@
    } else {
      throw new Error('Code snippet required');
    }
-   let renderTarget = wrapper.getElementsByClassName('bml-snippet-output-target')[0];
+   let renderTarget = wrapper.getElementsByClassName('bml-output-target')[0];
    function regenerate() {
      let renderResult = bml(bmlSrc);
      renderTarget.innerHTML = renderResult.replace('\n', '<br/>');
