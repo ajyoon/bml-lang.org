@@ -12,7 +12,6 @@ top = false
 
 The Blur Markup Language (BML) is a hybrid language combining
 Javascript, BML constructs, and whatever target format you use.
-Markdown and HTML are supported out of the box.
 
 # document structure {#document-structure}
 

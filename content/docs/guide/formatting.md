@@ -104,13 +104,3 @@ another {
 Visual newlines are rarely useful in [markdown documents](/docs/guide/formatting#markdown), since markdown generally treats all line breaks as visual line breaks (except double line breaks which mark paragraph breaks.)
 {% end %}
 
-### Markdown
-
-Markdown is a very common lightweight markup language for writing documents formatted with paragraphs, headings, lists, links, and so on. Because it's such a common use-case to use BML to write Markdown, which is then rendered to HTML and embedded in websites, BML includes a Markdown processor out-of-the-box.
-
-Markdown is a good deal easier to learn than BML, and there are loads of resources out there for it, for example [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) and [this interactive tutorial](https://www.markdowntutorial.com).
-
-Markdown rendering can be enabled with the render setting `renderMarkdown: true`, e.g. `bml(src, {renderMarkdown: true})`. When set, BML will output HTML text.
-
-BML embeds `marked@0.3.19`, which itself supports for CommonMark and GitHub Flavored Markdown. You can configure `marked` using [BML document settings](/docs/guide/doc-settings). For more information, see [the official `marked` 0.3.19 docs](https://github.com/markedjs/marked/tree/v0.3.19/docs).
-

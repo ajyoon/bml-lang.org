@@ -17,8 +17,7 @@ eval {
             version: null,
             whitespaceCleanup: true,
             punctuationCleanup: true,
-            capitalizationCleanup: true,
-            markdownSettings: {}
+            capitalizationCleanup: true
         }
     });
 }
@@ -55,11 +54,6 @@ eval {
 <td><code>capitalizationCleanup</code></td>
 <td><code>true</code></td>
 <td>Try to correct capitalization of the first words of sentences. <a href="/docs/guide/formatting#capitalization-cleanup">See here for details.</a></td>
-</tr>
-<tr>
-<td><code>markdownSettings</code></td>
-<td><code>{}</code></td>
-<td>A settings object to be passed to <code>marked</code>, the markdown processor built in to <code>bml</code>. For details on what settings can be passed to this, see the <a href="https://github.com/markedjs/marked/blob/v0.3.19/docs/USING_ADVANCED.md#options">marked docs</a>. This only has an effect if <code>bml</code> is invoked with markdown enabled via its <code>renderSettings</code>.</td>
 </tr>
 </tbody>
 </table>

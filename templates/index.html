@@ -79,8 +79,7 @@
   (Yet is not the space between Heaven and Earth like {@bellows}?),
   (But isn't the space between Heaven and Earth like {@bellows}?)
 }
-
-Empty yet structured,
+Empty yet structured, \\
 {@bellows:
   0 -> ({
     (worked, yet still the wind blows),
@@ -127,7 +126,7 @@ Empty yet structured,
      laoTzuSourceEl.style.opacity = 0
    }
    try {
-     outputTarget.innerHTML = bml(newEditorValue, {renderMarkdown: true});
+     outputTarget.innerHTML = bml(newEditorValue);
    } catch (e) {
      outputTarget.innerHTML = '<code class="bml-error">' + e + '</code>';
    }

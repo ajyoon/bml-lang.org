@@ -41,10 +41,5 @@ the following properties:
 <td><code>true</code></td>
 <td>A boolean flag controlling whether <code>eval</code> blocks should be executed in this render. This is primarily useful for security purposes.</td>
 </tr>
-<tr>
-<td><code>renderMarkdown</code></td>
-<td><code>false</code></td>
-<td>Whether or not the rendered <code>bml</code> document should be post-processed as markdown. If <code>true</code>, the output will be processed as markdown and output as HTML.</td>
-</tr>
 </tbody>
 </table>

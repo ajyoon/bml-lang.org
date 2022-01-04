@@ -52,5 +52,5 @@ modes skip literal blocks too: see?]]
 ```
 {% end %}
 
-Post-processing steps like markdown and whitespace correction still run on literal blocks.
+Post-processing steps like whitespace correction still run on literal blocks.
 

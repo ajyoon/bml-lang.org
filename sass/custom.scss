@@ -79,7 +79,7 @@ p, li {
 }
 
 .front-page-sandbox {
-  $editor-pane-min-height: 28rem;
+  $editor-pane-min-height: 27rem;
   min-height: $editor-pane-min-height;
   .editor-wrapper {
     // For some reason I have to explicitly set this height.
@@ -99,7 +99,7 @@ p, li {
   }
 
   .bml-output-wrapper {
-    min-height: 6rem;
+    min-height: 8rem;
     position: relative;
   }
 
@@ -109,7 +109,6 @@ p, li {
     right: 0.5rem; // to align with lao tzu source
     bottom: 0;
     left: 0;
-    white-space: inherit;
 
     > p {
       margin-bottom: 0;
