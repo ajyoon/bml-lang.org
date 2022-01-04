@@ -81,4 +81,4 @@ Those unfamiliar with regular expressions may find these resources helpful:
 - [MDN RegExp in-depth documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 - [regex101.com](https://regex101.com/) - interactive regexp builder (be sure to set the ECMAScript flavor)
 
-Regexp matchers are especially useful when used in combination with custom replacer functions, a topic we will cover later. [TODO LINK ME]
+Regexp matchers are especially useful when used in combination with custom replacer functions, [a topic we cover later](/docs/guide/eval).

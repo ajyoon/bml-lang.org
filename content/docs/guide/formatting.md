@@ -8,7 +8,7 @@ template = "docs/page.html"
 toc = true
 +++
 
-BML deals mostly with plain text, so it doesn't have much special syntax for formatting documents.
+BML deals mostly with plain text, so it doesn't have much special syntax for formatting documents. Besides a few automatic cleanup processes, BML generally outputs your text plain and without formatting.
 
 ### Automatic formatting cleanup
 
@@ -104,3 +104,20 @@ another {
 Visual newlines are rarely useful in [markdown documents](/docs/guide/formatting#markdown), since markdown generally treats all line breaks as visual line breaks (except double line breaks which mark paragraph breaks.)
 {% end %}
 
+### Example: Using BML to write Markdown
+
+While BML itself doesn't include any formatting capability, you can use BML to write documents in other languages which do. A common BML target is Markdown, a ubiquitous and simple markup language for converting legible plaintext into website-ready HTML.
+
+Markdown is a good deal easier to learn than BML, and there are loads of resources out there for it, for example [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) and [this interactive tutorial](https://www.markdowntutorial.com).
+
+To write BML code targeting Markdown, simply write Markdown and insert BML directives as needed. 
+
+{% bml_snippet() %}
+```bml
+# Hello {(blurry), (chancy)} world!
+1. {(An ordered), (A)} list
+2. Second entry
+```
+{% end %}
+
+This output can then be sent to a Markdown processor and converted to formatted and CSS-styleable HTML.
