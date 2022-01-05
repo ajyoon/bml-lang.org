@@ -72,7 +72,7 @@ contexts:
     - match: \bmatch\b
       scope: keyword.bml
   lineComment:
-    - match: //.*
+    - match: '((?<=\s)//|//(?=\s)).*'
       scope: comment.line.bml
   literalBlock:
     - match: '(?<!\\)(\[\[)'
