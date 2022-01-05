@@ -1,6 +1,6 @@
 +++
 title = "Modes"
-weight = 12
+weight = 13
 sort_by = "weight"
 template = "docs/page.html"
 

@@ -1,6 +1,6 @@
 +++
 title = "Formatting"
-weight = 15
+weight = 16
 sort_by = "weight"
 template = "docs/page.html"
 

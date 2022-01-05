@@ -1,6 +1,6 @@
 +++
 title = "Escapes"
-weight = 16
+weight = 14
 sort_by = "weight"
 template = "docs/page.html"
 

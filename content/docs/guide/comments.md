@@ -1,6 +1,6 @@
 +++
 title = "Comments"
-weight = 13
+weight = 12
 sort_by = "weight"
 template = "docs/page.html"
 
