@@ -28,7 +28,7 @@ and I am saying {@thing: 0 -> (them), 1 -> (it)}.
 The numbers to the left of the arrows are indexes referring to the branch taken in the referred choice block. Here, the `0` branch will be taken if the `thing` choice took its first branch. Similarly, the `1` branch will be taken if the referred choice took its second branch.
 
 {% note() %}
-References use 0-based indexing. This is likely to be a bit confusing for non-programmers, but it is necessary to harmonize with the Javascript code that can be embedded in documents. It may be helpful to think of 0-based indexes are offsets from the starting position.
+References use 0-based indexing. This is likely to be a bit confusing for non-programmers, but it is necessary to harmonize with the Javascript code that can be embedded in documents. It may be helpful to think of 0-based indexes as offsets from the starting position.
 {% end %}
 
 Mappings can be many-to-one---that is, multiple choice indexes can be associated with a single result. Where you would write a single choice index, simply write a comma-separated list of them.
