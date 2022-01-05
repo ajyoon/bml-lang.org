@@ -1,6 +1,6 @@
 +++
 title = "Formatting"
-weight = 14
+weight = 15
 sort_by = "weight"
 template = "docs/page.html"
 
@@ -101,7 +101,7 @@ another {
 {% end %}
 
 {% note() %}
-Visual newlines are rarely useful in [markdown documents](/docs/guide/formatting#markdown), since markdown generally treats all line breaks as visual line breaks (except double line breaks which mark paragraph breaks.)
+If you're [targetting a format-aware language like markdown](/docs/guide/formatting#example-using-bml-to-write-markdown) or [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), visual newlines may not be needed since such languages often treat all line breaks as visual line breaks.
 {% end %}
 
 ### Example: Using BML to write Markdown

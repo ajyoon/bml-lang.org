@@ -22,6 +22,8 @@ I have nothing to say
 
 Modes are defined at the beginning of a document. They consist of a series of replacement rules associating matchers and choices. When a mode is active, BML searches for text which matches its rules. When a match is found, BML replaces the matched text with the executed result of its associated choice.
 
+### Simple Modes and Rules
+
 Modes are defined with the following syntax:
 
 ```bml
