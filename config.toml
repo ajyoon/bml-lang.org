@@ -2,7 +2,7 @@
 base_url = "https://bml-lang.org"
 
 title = "BML"
-description = "A stochastic markup language"
+description = "Write text that changes"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
