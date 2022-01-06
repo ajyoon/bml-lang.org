@@ -8,7 +8,7 @@ template = "docs/page.html"
 toc = true
 +++
 
-BML is a programming language, but since it's for writing text---and especially poetry---it's designed to be easy to learn and use by non-technical writers. As such, we hope this guide will be accessible to new and experienced programmers alike.
+BML is a lightweight programming language for writing text whose particular realizations are left to chance. It can be used to write [chance poetry](https://weareinvitedtoclimb.org), translations, varying form letters, game dialogues, and more. BML is designed to be easy to learn and use by non-technical writers, so we hope this guide will be useful for both new and experienced programmers alike.
 
 ### The Sandbox
 
