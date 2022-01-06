@@ -20,6 +20,14 @@ code {
   }
 }
 
+// Workaround for adidoks bug where dark mode code bg color seems to
+// override zola theme. Seems like a variation on the bug I thought I
+// fixed earlier. Will look into more later, but this fix should do
+// for now.
+body.dark code:not(.hljs) {
+  background: inherit;
+}
+
 main {
   img {
     display: block;
