@@ -106,6 +106,18 @@
    modal.show();
  }
 
+ function deactivateOutputDiv(el) {
+   el.style.opacity = 0;
+   el.style.zIndex = 99;
+   setTimeout(() => {
+   }, 500);
+ }
+
+ function activateOutputDiv(el) {
+   el.style.opacity = 1;
+   el.style.zIndex = 100;
+ }
+
  let bmlSrc = `Hello, {(blurry), (changing)} world!`;
 
  var editor = ace.edit("editor");
@@ -134,16 +146,19 @@
  let activeRefreshTimeout = null;
  function rotateBmlOutput() {
    let oldOutputTarget = document.getElementById('bml-target-' + activeOutput);
-   oldOutputTarget.style.opacity = 0;
    activeOutput = activeOutput === 1 ? 2 : 1;
    let outputTarget = document.getElementById('bml-target-' + activeOutput);
+   console.log(`setting outputTarget.scrollTop to ${oldOutputTarget.scrollTop}`);
+   console.log(`outputTarget.scrollTop = ${outputTarget.scrollTop}`);
    try {
      let bmlSettings = RJSON.parse(document.getElementById('bml-render-settings').value)
      outputTarget.innerHTML = bml(editor.getValue(), bmlSettings);
    } catch (e) {
      outputTarget.innerHTML = '<code class="bml-error">' + e + '</code>';
    }
-   outputTarget.style.opacity = 1;
+   outputTarget.scrollTop = oldOutputTarget.scrollTop;
+   activateOutputDiv(outputTarget);
+   deactivateOutputDiv(oldOutputTarget);
 
    let interval = document.getElementById('bml-refresh-rate-sec').valueAsNumber * 1000;
    activeRefreshTimeout = setTimeout(rotateBmlOutput, interval);

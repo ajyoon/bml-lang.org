@@ -16,7 +16,7 @@ If you aren't a comfortable Javascript programmer and you don't immediately need
 
 ### `eval` blocks
 
-Like modes, custom Javascript code is defined at the beginning of a document in an `eval` block. Eval blocks are evaluated as Javascript through [the `Function` constructor.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function). Functions are exposed to BML through a special `provide({})` function.
+Like modes, custom Javascript code is defined at the beginning of a document in an `eval` block. Eval blocks are evaluated as Javascript through [the `Function` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function). Functions are exposed to BML through a special `provide({})` function.
 
 {% bml_snippet() %}
 ```bml
