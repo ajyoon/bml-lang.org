@@ -1,5 +1,12 @@
-<svg version="1.1" baseProfile="full" width="503.5" height="369" viewbox="0 0 503.5 369" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >[&lt;start&gt;st] -&gt; [I have]
+<svg version="1.1" baseProfile="full" width="503.5" height="369" viewbox="0 0 503.5 369" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  12pt Jost, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc >#stroke: rgb(248, 248, 242)
+#fill: #33322E; #33322E
+#background: #272822
+#font: Jost
+#lineWidth: 1.5
+
+
+[&lt;start&gt;st] -&gt; [I have]
 [I have] -&gt; [something]
 [I have] -&gt; [nothing]
 [something] -&gt; [to say]
@@ -10,34 +17,34 @@
 [to say] -&gt; [&lt;end&gt;end]
 [John Cage wrote about Silence] -&gt; [end]
 </desc>
-  <rect x="0" y="0" height="369" width="503.5" style="stroke:none; fill:transparent;"></rect>
-  <path d="M227.5 48.7 L140.8 78.5 L140.8 91.8 L140.8 91.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M135.4 85.2 L140.8 91.8 L146.1 85.2 L140.8 98.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M113.1 129.5 L77.5 149.5 L77.5 162.8 L77.5 162.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M72.2 156.2 L77.5 162.8 L82.8 156.2 L77.5 169.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M168.4 129.5 L204 149.5 L204 162.8 L204 162.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M198.7 156.2 L204 162.8 L209.3 156.2 L204 169.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M77.5 200.5 L77.5 220.5 L107.3 237.2 L107.3 237.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M98.9 238.6 L107.3 237.2 L104.1 229.3 L113.1 240.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M204 200.5 L204 220.5 L174.2 237.2 L174.2 237.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M177.4 229.3 L174.2 237.2 L182.6 238.6 L168.4 240.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M257.5 48.6 L344.5 78.5 L344.5 114 L344.5 114 L344.5 149.5 L344.5 149.5 L344.5 185 L344.5 185 L344.5 220.5 L344.5 220.5 L344.5 233.8 L344.5 233.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M339.2 227.2 L344.5 233.8 L349.8 227.2 L344.5 240.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M140.8 271.5 L140.8 291.5 L221.2 319.2 L221.2 319.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M213.2 322 L221.2 319.2 L216.6 312 L227.5 321.3 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M344.5 271.5 L344.5 291.5 L263.8 319.2 L263.8 319.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
-  <path d="M268.4 312 L263.8 319.2 L271.8 322.1 L257.5 321.4 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
-  <circle r="12" cx="242.5" cy="43.5" data-name="st" style="stroke:none; fill:#33322E;"></circle>
-  <rect x="108.5" y="98.5" height="31" width="65" data-name="I have" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
-  <text x="141" y="120" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="I have">I have</text>
-  <rect x="28.5" y="169.5" height="31" width="98" data-name="something" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
-  <text x="77.5" y="191" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="something">something</text>
-  <rect x="166.5" y="169.5" height="31" width="75" data-name="nothing" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
-  <text x="204" y="191" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="nothing">nothing</text>
-  <rect x="108.5" y="240.5" height="31" width="64" data-name="to say" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
-  <text x="140.5" y="262" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="to say">to say</text>
-  <rect x="213.5" y="240.5" height="31" width="263" data-name="John Cage wrote about Silence" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
-  <text x="345" y="262" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="John Cage wrote about Silence">John Cage wrote about Silence</text>
-  <circle r="10" cx="242.5" cy="326.5" data-name="end" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></circle>
-  <circle r="6" cx="242.5" cy="326.5" data-name="end" style="stroke:none; fill:#33322E;"></circle>
+  <rect x="0" y="0" height="369" width="503.5" style="stroke:none; fill:#272822;"></rect>
+  <path d="M227 48.2 L140.3 78 L140.3 91.3 L140.3 91.3 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M134.9 84.7 L140.3 91.3 L145.6 84.7 L140.3 98 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M112.6 129 L77 149 L77 162.3 L77 162.3 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M71.7 155.7 L77 162.3 L82.3 155.7 L77 169 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M167.9 129 L203.5 149 L203.5 162.3 L203.5 162.3 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M198.2 155.7 L203.5 162.3 L208.8 155.7 L203.5 169 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M77 200 L77 220 L106.8 236.7 L106.8 236.7 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M98.4 238.1 L106.8 236.7 L103.6 228.8 L112.6 240 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M203.5 200 L203.5 220 L173.7 236.7 L173.7 236.7 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M176.9 228.8 L173.7 236.7 L182.1 238.1 L167.9 240 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M257 48.1 L344 78 L344 113.5 L344 113.5 L344 149 L344 149 L344 184.5 L344 184.5 L344 220 L344 220 L344 233.3 L344 233.3 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M338.7 226.7 L344 233.3 L349.3 226.7 L344 240 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M140.3 271 L140.3 291 L220.7 318.7 L220.7 318.7 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M212.7 321.5 L220.7 318.7 L216.1 311.5 L227 320.8 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M344 271 L344 291 L263.3 318.7 L263.3 318.7 " style="stroke:rgb(248, 248, 242);fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
+  <path d="M267.9 311.5 L263.3 318.7 L271.3 321.6 L257 320.9 Z" style="stroke:rgb(248, 248, 242);fill:rgb(248, 248, 242);stroke-dasharray:none;stroke-width:1.5;"></path>
+  <circle r="12" cx="242" cy="43" data-name="st" style="stroke:none; fill:rgb(248, 248, 242);"></circle>
+  <rect x="108" y="98" height="31" width="65" data-name="I have" style="stroke:rgb(248, 248, 242);fill:#33322E;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="140.5" y="119.5" style="fill: rgb(248, 248, 242);font:bold  12pt Jost, Helvetica, sans-serif;text-anchor: middle;" data-name="I have">I have</text>
+  <rect x="28" y="169" height="31" width="98" data-name="something" style="stroke:rgb(248, 248, 242);fill:#33322E;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="77" y="190.5" style="fill: rgb(248, 248, 242);font:bold  12pt Jost, Helvetica, sans-serif;text-anchor: middle;" data-name="something">something</text>
+  <rect x="166" y="169" height="31" width="75" data-name="nothing" style="stroke:rgb(248, 248, 242);fill:#33322E;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="203.5" y="190.5" style="fill: rgb(248, 248, 242);font:bold  12pt Jost, Helvetica, sans-serif;text-anchor: middle;" data-name="nothing">nothing</text>
+  <rect x="108" y="240" height="31" width="64" data-name="to say" style="stroke:rgb(248, 248, 242);fill:#33322E;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="140" y="261.5" style="fill: rgb(248, 248, 242);font:bold  12pt Jost, Helvetica, sans-serif;text-anchor: middle;" data-name="to say">to say</text>
+  <rect x="213" y="240" height="31" width="263" data-name="John Cage wrote about Silence" style="stroke:rgb(248, 248, 242);fill:#33322E;stroke-dasharray:none;stroke-width:1.5;"></rect>
+  <text x="344.5" y="261.5" style="fill: rgb(248, 248, 242);font:bold  12pt Jost, Helvetica, sans-serif;text-anchor: middle;" data-name="John Cage wrote about Silence">John Cage wrote about Silence</text>
+  <circle r="10" cx="242" cy="326" data-name="end" style="stroke:rgb(248, 248, 242);fill:#33322E;stroke-dasharray:none;stroke-width:1.5;"></circle>
+  <circle r="6" cx="242" cy="326" data-name="end" style="stroke:none; fill:rgb(248, 248, 242);"></circle>
 </svg>
