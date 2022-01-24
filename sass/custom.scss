@@ -87,7 +87,7 @@ p, li {
 }
 
 .front-page-sandbox {
-  $editor-pane-min-height: 27rem;
+  $editor-pane-min-height: 24rem;
   min-height: $editor-pane-min-height;
   .editor-wrapper {
     // For some reason I have to explicitly set this height.

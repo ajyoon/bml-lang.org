@@ -60,9 +60,10 @@
           </div>
         </div>
       </div>
-      <div class="row" aria-hidden="true">
+      <div class="row">
         <div class="col" id="lao-tzu-5-source">
-          天 地 之 間<br/>其 猶 橐 籥 乎<br/>虛 而 不 屈<br/>動 而 愈 出
+          <p>Lao Tzu 5</p>
+          <p aria-hidden="true">天 地 之 間<br/>其 猶 橐 籥 乎<br/>虛 而 不 屈<br/>動 而 愈 出</p>
         </div>
       </div>
     </div>
@@ -90,9 +91,7 @@ Empty yet structured, \\
     (it moves, inexhaustibly singing),
     (worked, yet singing without end)
   })
-}.
-
-<p style="text-align: right"><i>— Lao Tzu 5</i></p>`;
+}.`;
 
  var editor = ace.edit("editor");
  editor.setValue(bmlSrc);
@@ -121,9 +120,12 @@ Empty yet structured, \\
    activeOutput = activeOutput === 1 ? 2 : 1;
    let outputTarget = document.getElementById('bml-target-' + activeOutput);
    let newEditorValue = editor.getValue();
-   if (newEditorValue !== bmlSrc) {
-     let laoTzuSourceEl = document.getElementById('lao-tzu-5-source');
+   let laoTzuSourceEl = document.getElementById('lao-tzu-5-source');
+   if (newEditorValue !== bmlSrc && laoTzuSourceEl.style.opacity === '') {
      laoTzuSourceEl.style.opacity = 0
+     setTimeout(() => {
+       laoTzuSourceEl.style.display = 'none';
+     }, 600);
    }
    try {
      outputTarget.innerHTML = bml(newEditorValue);
