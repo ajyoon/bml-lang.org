@@ -39,7 +39,7 @@ markup and returns a rendered output string.
 
 {% note() %}
 While CDN-hosted libraries are convenient, many prefer to self-host
-their dependencies for security, privacy, and reliability reasons. You can do this by downloading the bundle from [its source on the BML repo](https://github.com/ajyoon/bml/raw/master/dist/bml.bundle.js), or building it yourself below, and hosting it from your website directly.
+their dependencies for security, privacy, and reliability reasons. You can do this by downloading the bundle from the CDN or building it yourself, and hosting it from your website directly.
 {% end %}
 
 ## Building artifacts yourself
