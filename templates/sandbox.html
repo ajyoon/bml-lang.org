@@ -14,6 +14,7 @@
   <script src="/js/ace/ace.js"></script>
   <script src="/js/relaxed-json.min.js"></script>
   <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/lz-string.min.js"></script>
 {% endblock page_specific_head_tags %}
 
 <!-- Auto-enable dark mode on this page -->
@@ -65,7 +66,7 @@
 
       </div>
       <div class="col editor-settings">
-        <h4>Settings</h4>
+        <h4>Controls</h4>
         <ul>
           <li>
             <label for="bml-refresh-rate-sec">Regeneration interval (secs):</label>
@@ -76,6 +77,7 @@
             <code style="padding:0"><input type="text" id="bml-render-settings" value="{}"/></code>
           </li>
         </ul>
+        <button id="save-button">Save in URL</button>
       </div>
     </div>
   </div>
@@ -117,8 +119,10 @@
    el.style.opacity = 1;
    el.style.zIndex = 100;
  }
-
- let bmlSrc = `Hello, {(blurry), (changing)} world!`;
+ 
+ let urlSrc = new URLSearchParams(window.location.search).get('src');
+ let bmlSrc = urlSrc ? LZString.decompressFromEncodedURIComponent(urlSrc)
+            : `Hello, {(blurry), (changing)} world!`;
 
  var editor = ace.edit("editor");
  editor.setValue(bmlSrc);
@@ -148,8 +152,6 @@
    let oldOutputTarget = document.getElementById('bml-target-' + activeOutput);
    activeOutput = activeOutput === 1 ? 2 : 1;
    let outputTarget = document.getElementById('bml-target-' + activeOutput);
-   console.log(`setting outputTarget.scrollTop to ${oldOutputTarget.scrollTop}`);
-   console.log(`outputTarget.scrollTop = ${outputTarget.scrollTop}`);
    try {
      let bmlSettings = RJSON.parse(document.getElementById('bml-render-settings').value)
      outputTarget.innerHTML = bml(editor.getValue(), bmlSettings);
@@ -169,6 +171,12 @@
    clearTimeout(activeRefreshTimeout);
    rotateBmlOutput()
  };
+ 
+ document.getElementById('save-button').onclick = () => {
+   let currentSrc = editor.getValue();
+   let compressedSrc = LZString.compressToEncodedURIComponent(currentSrc);
+   window.location.search = '?src=' + compressedSrc;
+ }
 </script>
 
 {% endraw %}
