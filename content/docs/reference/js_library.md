@@ -39,7 +39,7 @@ the following properties:
 <tr>
 <td><code>allowEval</code></td>
 <td><code>true</code></td>
-<td>A boolean flag controlling whether <code>eval</code> blocks should be executed in this render. This is primarily useful for security purposes.</td>
+<td>A boolean flag controlling whether <code>eval</code> blocks should be allowed in this render. If <code>false</code>, eval blocks will cause an error to be thrown. This is primarily useful for security purposes.</td>
 </tr>
 </tbody>
 </table>

@@ -30,9 +30,9 @@ Unlike the word processors typically used by writers which have opaque file form
 Open [the sandbox](/sandbox) and try writing some plain old text.
 {% end %}
 
-### Choices
+### Forks
 
-The fundamental chance construct BML offers is inline choices. Rather than writing *A* or *B*, you can write both and let BML choose for your readers automatically:
+The fundamental chance construct BML offers is forks. Rather than writing *A* or *B*, you can write both and let BML choose for your readers automatically:
 
 {% bml_snippet() %}
 ```bml
@@ -40,7 +40,7 @@ The fundamental chance construct BML offers is inline choices. Rather than writi
 ```
 {% end %}
 
-Amidst the plain text of your document, BML commands are invoked using curly braces (`{}`). Choice blocks are written by opening curly braces and writing a comma-separated list of options. Each option is wrapped in parentheses.
+Amidst the plain text of your document, BML commands are invoked using these curly braces (`{}`). Forks are written by opening curly braces and writing a comma-separated list of branches. The simplest kind of branch is a text branch, which is just BML text wrapped in parentheses.
 
 {% bml_snippet() %}
 ```bml
@@ -48,7 +48,7 @@ I have {(something), (nothing)} to say.
 ```
 {% end %}
 
-Choice blocks can have any number of choices, and can be used anywhere in your text. Choices can be any text, including nothing (indicated by a bare set of parentheses `()`). You can also insert line breaks and indentation anywhere inside the BML command context without affecting the output text. This is very helpful for visually organizing more complex choices.
+Forks can have any number of branches, and can be used anywhere in your text. Branches can contain any text, including nothing (indicated by a bare set of parentheses `()`). You can also insert line breaks and indentation anywhere inside the BML command context without affecting the output text. This is very helpful for visually organizing more complex forks.
 
 {% bml_snippet() %}
 ```bml
@@ -61,11 +61,11 @@ and I am {(not), ()} saying it.
 ```
 {% end %}
 
-With each choice and branch, the number of possible output documents increases dramatically. Already this example has 6 possibilities (3 × 2).
+With each fork and branch, the number of possible output documents increases dramatically. Already this example has 6 possibilities (3 × 2).
 
 ### Weights
 
-By default, each choice is equally likely to be chosen. This can be overriden by explicitly assigning weights expressed as probability percentages.
+By default, each branch is equally likely to be chosen. This can be overriden by explicitly assigning weights expressed as probability percentages.
 
 {% bml_snippet() %}
 ```bml
@@ -73,11 +73,11 @@ I have {(nothing) 70, (something)} to say.
 ```
 {% end %}
 
-In this example, `nothing` is 70% likely to be chosen, and `something` is 30%. (Any unclaimed probability is equally divided among unweighted choices.)
+In this example, `nothing` is 70% likely to be chosen, and `something` is 30%. (Any unclaimed probability is equally divided among unweighted branches.)
 
-### Nesting choices
+### Nesting forks
 
-The contents of parentheses-delimited choices can be any BML text, which means we can also use choices inside them just like anywhere else.
+The contents of text branches can be any BML text, which means we can also use forks inside them just like anywhere else.
 
 {% bml_snippet() %}
 ```bml
@@ -88,16 +88,25 @@ The contents of parentheses-delimited choices can be any BML text, which means w
 ```
 {% end %}
 
-You can think of choices as graphs with points where possibilities branch and come back together. We can visualize the branching structure of choices by sketching out diagrams like these:
+You can think of forks as graphs with points where possibilities branch and come back together. We can visualize the branching structure of choices by sketching out diagrams like these:
 
 ![A diagram of the tree structure of the previous code snippet](/img/diagrams/nesting_choices.svg)
 
-{% try_it() %}
-We've covered a lot of ground! The techniques you've learned are already enough to start writing documents rich with possibility. In fact, this is practically everything BML's original author used to write [a whole book of chance poetry](https://weareinvitedtoclimb.org/)! Before we go into more advanced concepts, open up [the sandbox](/sandbox) and practice what you've learned. Try writing text with simple, weighted, and nesting choices.
+### Other branch types
 
-- Choices can be nested arbitrarily deeply. Try writing a doubly nested one.
-- Play around with line breaks and indentation in choices. Notice which placements cause those formatting changes to be included in or omitted from the output text.
-- Try writing an easter egg choice branch that only appears for 0.1% of readers.
+So far we've just discussed text branches, marked by parentheses, but BML supports two other kinds. 
+
+First, for convenient nesting, BML allows you to directly use a fork as a branch, for example `{(foo), {(bar), (biz)}}`. This is convenient for weighting a group of branches equally, and in [references](/docs/guide/references).
+
+Second, you can run custom Javascript code using [eval blocks](/docs/guide/eval), marked by square brackets - `{[insert('foo')]}`. We'll come back to this later.
+
+
+{% try_it() %}
+We've covered a lot of ground! The techniques you've learned are already enough to start writing documents rich with possibility. In fact, this is practically everything BML's original author used to write [a whole book of chance poetry](https://weareinvitedtoclimb.org/)! Before we go into more advanced concepts, open up [the sandbox](/sandbox) and practice what you've learned. Try writing text with simple, weighted, and nesting forks.
+
+- Forks can be nested arbitrarily deeply. Try writing a doubly nested one.
+- Play around with line breaks and indentation in forks. Notice which placements cause those formatting changes to be included in or omitted from the output text.
+- Try writing an easter egg fork branch that only appears for 0.1% of readers.
 - Review the above graph diagram. How many possible paths are there through it? This is the number of unique BML outputs from the corresponding example.
 {% end %}
 

@@ -1,6 +1,6 @@
 +++
 title = "Document Settings"
-weight = 15
+weight = 16
 sort_by = "weight"
 template = "docs/page.html"
 
@@ -8,19 +8,18 @@ template = "docs/page.html"
 toc = true
 +++
 
-Certain behaviors of BML can be configured by providing a special `settings` object in an `eval` block.
+Certain behaviors of BML can be configured by binding a special `settings` object in an eval block.
 
 ```bml
-eval {
-    provide({
+{[
+    bind({
         settings: {
-            version: null,
             whitespaceCleanup: true,
             punctuationCleanup: true,
             capitalizationCleanup: true
         }
     });
-}
+]}
 ```
 
 <table>
@@ -34,11 +33,6 @@ eval {
 <td>setting</td>
 <td>default</td>
 <td>purpose</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td><code>null</code></td>
-<td>The <code>bml</code> version number the document is written for. If present, <code>bml</code> will check that this matches the version running. If it does not, a warning will be logged to the console.</td>
 </tr>
 <tr>
 <td><code>whitespaceCleanup</code></td>

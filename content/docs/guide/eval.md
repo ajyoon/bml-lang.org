@@ -8,72 +8,99 @@ template = "docs/page.html"
 toc = true
 +++
 
-Between choices, nested choices, references, and modes, BML offers deep chance operation capabilities out of the box. For more advanced use-cases, BML allows you to define custom Javascript functions which act on your document through choices and modes.
+Between forks, nested forks, and references, BML offers deep chance operation capabilities out of the box. For more advanced use-cases, BML allows you to run custom Javascript throughout your document.
 
 {% note() %}
 If you aren't a comfortable Javascript programmer and you don't immediately need these features, consider skipping this page.
 {% end %}
 
-### `eval` blocks
+### Eval branches
 
-Like modes, custom Javascript code is defined at the beginning of a document in an `eval` block. Eval blocks are evaluated as Javascript through [the `Function` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function). Functions are exposed to BML through a special `provide({})` function.
+Javascript code is defined in a fork branch, marked with square brackets. If you want to unconditionally run the code, simply define a single-branch fork:
+
+```bml
+{[
+    insert('foo');
+]}
+```
+
+Eval blocks are evaluated as Javascript through [the `Function` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function). They pass data back to BML with two provided functions - `insert` and `bind`.
+
+`insert` simply takes a string and inserts it in the rendered output.
 
 {% bml_snippet() %}
 ```bml
-eval {
-    provide({
-        test: (match, inlineCall) => {
-            return 'Hello, world!'
-        }
-    });
-}
-{call test}
+{[
+    insert('foo');
+]}
 ```
 {% end %}
 
-Functions should have the signature:
-
-```ts
-(match: RegExpMatchArray | null,
- inlineCall: { input: string, index: number } | null) -> string
-```
-
-
-Custom functions are invoked using the `call` command from inline or mode choices. When called from a mode, the [regexp match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value) is passed to `match`; when called inline the complete document and index of the call command are passed to `inlineCall`.
+You can mark variables to be saved between eval blocks with the `bind` function. It takes an object where all its keys are valid javascript identifiers, and injects its members into every following eval block.
 
 {% bml_snippet() %}
 ```bml
-eval {
-    function preview(str) {
-        return JSON.stringify(str.substring(0, 10) + '...');
-    }
-
-    provide({
-        test: (match, inlineCall) => {
-           if (match) {
-               return `\
-match found: ${JSON.stringify(match)}
-match.input: ${preview(match.input)}
-match.index: ${match.index}`;
-           } else {
-               return `\
-inlineCall found:
-inlineCall.input: ${preview(inlineCall.input)}
-inlineCall.index: ${inlineCall.index}`;
-           }
+{[
+    bind({
+        someValue: 'bar',
+        myFunc: (value) => {
+            insert(value);
         }
     });
-}
-mode example {
-    (foo) -> {call test}
-}
-{use example}
-foo
-------
-{call test}
+]}
+{[myFunc('foo')]}
+{[myFunc(someValue)]}
 ```
 {% end %}
 
-{% try_it() %}
-Try writing a custom function and mode which sometimes capitalizes the first letter of words starting with the letter *A*.
+
+Once bound, you cannot bind the same name again, but you can change their values by simply assigning to them.
+
+
+{% bml_snippet() %}
+```bml
+{[
+    bind({
+        someValue: 'bar',
+        myFunc: (value) => {
+            insert(value);
+        }
+    });
+]}
+{[
+    myFunc(someValue);
+    // This change will be saved in the execution context
+    someValue = 'biz';
+]}
+{[myFunc(someValue)]}
+```
+{% end %}
+
+### The Eval API
+
+Some additional functions are provided to the executation context through the reserved `bml` object. These are currently limited to methods which generate random numbers using BML's random number generator, which is necessary to ensure reproducibility when BML is run with a fixed seed.
+
+#### bml.randomFloat(min, max)
+
+Return a random float within the given bounds
+
+{% bml_snippet() %}
+```bml
+{[
+    insert(bml.randomFloat(1, 2));
+]}
+```
+{% end %}
+
+
+#### bml.randomInt(min, max)
+
+Return a random integer within the given bounds
+
+{% bml_snippet() %}
+```bml
+{[
+    insert(bml.randomInt(1, 10));
+]}
+```
 {% end %}
