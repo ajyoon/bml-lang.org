@@ -3,8 +3,6 @@
 # http://www.sublimetext.com/docs/syntax.html
 name: BML
 scope: source.bml
-file_extensions:
-  - bml
 contexts:
   main:
     - include: body
@@ -20,23 +18,30 @@ contexts:
   body:
     - include: escape
     - include: literalBlock
-    - include: eval
-    - include: mode
-    - include: commands
+    - include: fork
     - include: lineComment
     - include: blockComment
-  callCommand:
-    - match: 'call\s+(\w*)'
-      scope: keyword.bml
-      captures:
-        1: string.bml
-  choiceName:
+  choiceId:
     - match: '[@#]?(\w+):?'
       scope: string.bml
   comma:
     - match: ','
       scope: keyword.control.bml
-  commands:
+  escape:
+    - match: \\
+      scope: keyword.bml
+  eval:
+    - match: '(?<!\\)(\[)'
+      captures:
+        1: keyword.control.bml
+      push:
+        - meta_scope: keyword.bml
+        - match: '(\])'
+          captures:
+            1: keyword.control.bml
+          pop: true
+        - include: scope:source.js
+  fork:
     - match: '(?<!\\)(\{)'
       captures:
         1: keyword.control.bml
@@ -45,92 +50,41 @@ contexts:
           captures:
             1: keyword.control.bml
           pop: true
-        - include: replacer
-        - include: callCommand
-        - include: kwMatch
-        - include: useCommand
+        - include: textBranch
+        - include: eval
+        - include: fork
         - include: number
         - include: comma
         - include: arrow
-        - include: choiceName
+        - include: choiceId
         - include: lineComment
         - include: blockComment
-  escape:
-    - match: \\
-      scope: keyword.bml
-  eval:
-    - match: '(?<!\\)(eval)\s*(\{)'
-      captures:
-        1: keyword.bml
-        2: keyword.control.bml
-      embed: scope:source.ts
-      embed_scope: source.ts
-      escape: '^(\})$'
-      escape_captures:
-        0: keyword.control.bml
-  kwMatch:
-    - match: \bmatch\b
-      scope: keyword.bml
   lineComment:
-    - match: '((?<=\s)//|//(?=\s)).*'
+    - match: ((?<=\s)//|//(?=\s)).*
       scope: comment.line.bml
   literalBlock:
     - match: '(?<!\\)(\[\[)'
       captures:
-        1: keyword.bml
+        1: string.bml
       push:
+        - meta_scope: text.markup.bml
         - match: '(?<!\\)(\]\])'
           captures:
-            1: keyword.bml
+            1: string.bml
           pop: true
-  mode:
-    - match: '(?<!\\)(mode)\s+(\w+)\s*(\{)'
-      captures:
-        1: keyword.bml
-        2: entity.name.type.bml
-        3: keyword.control.bml
-      push:
-        - match: '(\})'
-          captures:
-            1: keyword.control.bml
-          pop: true
-        - include: lineComment
-        - include: blockComment
-        - include: rule
   number:
     - match: (\d+(\.\d+)?)|(\.\d+)
       scope: constant.numeric.bml
-  regexMatcher:
-    - match: (/)
-      push:
-        - meta_scope: keyword.control.bml
-        - meta_content_scope: string.regexp.bml
-        - match: (/)
-          pop: true
-        - match: \/
-  replacer:
+  textBranch:
     - match: (\()
       comment: Since it's really important to make parens differ from braces, use some arbitrary other common scope name
       captures:
-        1: entity.name.function
+        1: entity.name.function.bml
       push:
         - meta_scope: punctuation.bml
         - meta_content_scope: text.markup.bml
         - match: (\))
           captures:
-            1: entity.name.function
+            1: entity.name.function.bml
           pop: true
         - include: body
-  rule:
-    - include: regexMatcher
-    - include: commands
-    - include: replacer
-    - include: arrow
-    - include: comma
-    - include: lineComment
-    - include: blockComment
-  useCommand:
-    - match: 'use\s+(\w+)'
-      scope: keyword.bml
-      captures:
-        1: entity.name.type.bml
