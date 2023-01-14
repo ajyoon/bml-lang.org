@@ -9,7 +9,7 @@ template = "docs/page.html"
 toc = true
 +++
 
-The bml library is exposed by a single function:
+The bml library is mostly exposed by a single function:
 
 ```ts
 bml(sourceString: string, renderSettings: object?)
@@ -43,3 +43,11 @@ the following properties:
 </tr>
 </tbody>
 </table>
+
+### Static analysis
+
+The library can also perform static analysis on BML documents to count how many possible branches there are in a given document.
+
+```ts
+analyze(bmlDocument: string): { possibleOutcomes: bigint }
+```
