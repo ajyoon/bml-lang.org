@@ -1,6 +1,6 @@
 +++
 title = "Document Settings"
-weight = 16
+weight = 17
 sort_by = "weight"
 template = "docs/page.html"
 

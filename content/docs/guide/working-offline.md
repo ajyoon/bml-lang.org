@@ -1,6 +1,6 @@
 +++
 title = "Working Offline"
-weight = 18
+weight = 19
 sort_by = "weight"
 template = "docs/page.html"
 
