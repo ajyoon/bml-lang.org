@@ -46,7 +46,8 @@ the following properties:
 
 ### Static analysis
 
-The library can also perform static analysis on BML documents to count how many possible branches there are in a given document.
+The library can also perform static analysis on BML documents to approximate how many possible branches there are in a given document. This does a rough back-of-the-envelope approximation of the number of possible branches through the document. It has several shortcomings, especially when dealing with refs and silent forks.
+
 
 ```ts
 analyze(bmlDocument: string): { possibleOutcomes: bigint }

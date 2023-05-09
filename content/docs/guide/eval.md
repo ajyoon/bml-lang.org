@@ -95,7 +95,7 @@ Return a random float within the given bounds
 
 #### bml.randomInt(min, max)
 
-Return a random integer within the given bounds
+Return a random integer greater than or equal to `min` and less than `max`.
 
 {% bml_snippet() %}
 ```bml
