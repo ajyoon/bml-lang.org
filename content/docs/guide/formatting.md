@@ -42,7 +42,7 @@ and whitespace at doc end is removed
 
 Controlled by `settings.punctuationCleanup`
 
-- Performs simple English-like correction of whitespace around punctuation marks by snapping `, . : ; ! ?` to the end of preceding words when separated by whitespace (including line breaks)
+- Performs simple English-like correction of whitespace around punctuation marks by snapping `, . : ; ! ?` and similar to the end of preceding words when separated by whitespace (including line breaks)
 
 {% bml_snippet() %}
 ```bml

@@ -22,7 +22,7 @@ contexts:
     - include: lineComment
     - include: blockComment
   choiceId:
-    - match: '[@#]?(\w+):?'
+    - match: '(@|#|@!|)(\w+):?'
       scope: string.bml
   comma:
     - match: ','

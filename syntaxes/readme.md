@@ -40,4 +40,4 @@ Then update Ace by:
 1. navigating to ace/tool
 1. running `node tmlanguage.js ~/.config/sublime-text/Packages/User/bml.tmLanguage`
 1. use git/magit to discard changes to `lib/ace/mode/bml.js` (don't undo my patches)
-1. run `ace/build_for_site.sh`
+1. from `bml-lang.org/ace`, run `sh build_for_site.sh`
