@@ -64,7 +64,7 @@ Fallbacks are necessary when referencing forks that may not always execute, like
 ```
 {% end %}
 
-We can also ask BML to repeat the referenced fork result verbatim using a bare reference without any mappings. This is especially useful for copying nested fork results.
+We can ask BML to repeat the referenced fork result verbatim using a bare reference without any mappings. This is especially useful for copying nested fork results.
 
 {% bml_snippet() %}
 ```bml
@@ -75,6 +75,17 @@ We can also ask BML to repeat the referenced fork result verbatim using a bare r
 {@choice}
 ```
 {% end %}
+
+We can similarly ask BML to re-execute a fork by using the 'copy' syntax with a `@!` sign instead. This is useful for concisely reusing fork code when we want to allow the possibility of the original output being repeated. When a fork is re-executed in this way, it also updates the stored execution result so that subsequent references will be mapped relative to the most recent execution.
+
+{% bml_snippet() %}
+```bml
+{choice: (something), (nothing)} is {@!choice},
+// Subsequent references are relative to the last execution.
+and {@choice} is always {@choice: 0 -> (some thing), 1 -> (no thing)}.
+```
+{% end %}
+
 
 Finally, we can ask BML to silently execute forks without inserting their results by prefixing their id with a `#` sign. This is great for complex documents where we might want to separate out the definition of a complex fork from its use where it might interfere with the legibility of a sentence.
 
