@@ -8,6 +8,8 @@ template = "docs/page.html"
 toc = true
 +++
 
+### Mapped references
+
 Forks can also be context-aware by referencing each other. First, label a fork by opening it with an id followed by a colon.
 
 ```bml
@@ -64,6 +66,8 @@ Fallbacks are necessary when referencing forks that may not always execute, like
 ```
 {% end %}
 
+### Verbatim copying references
+
 We can ask BML to repeat the referenced fork result verbatim using a bare reference without any mappings. This is especially useful for copying nested fork results.
 
 {% bml_snippet() %}
@@ -76,6 +80,8 @@ We can ask BML to repeat the referenced fork result verbatim using a bare refere
 ```
 {% end %}
 
+### Re-execution
+
 We can similarly ask BML to re-execute a fork by using the 'copy' syntax with a `@!` sign instead. This is useful for concisely reusing fork code when we want to allow the possibility of the original output being repeated. When a fork is re-executed in this way, it also updates the stored execution result so that subsequent references will be mapped relative to the most recent execution.
 
 {% bml_snippet() %}
@@ -86,6 +92,34 @@ and {@choice} is always {@choice: 0 -> (some thing), 1 -> (no thing)}.
 ```
 {% end %}
 
+### Exclusive sets
+
+If a named fork is marked as a **set** with the `$` symbol, re-executions of it will exclude any previously picked branches.
+
+{% bml_snippet() %}
+```bml
+{$thing: (something), (nothing), (some thing), (no thing)}
+{@!thing}
+{@!thing}
+{@!thing}
+```
+{% end %}
+
+If a set is re-executed after all its possibilities have been exhausted, the set is restored.
+
+{% bml_snippet() %}
+```bml
+{$thing: (something), (nothing), (some thing)}
+{@!thing}
+{@!thing}
+{@!thing} (set is restored)
+{@!thing}
+```
+{% end %}
+
+As with typical re-executing references, subsequent mapped references will be relative to the most recent execution using the indexes as originally declared.
+
+### Silent forks
 
 Finally, we can ask BML to silently execute forks without inserting their results by prefixing their id with a `#` sign. This is great for complex documents where we might want to separate out the definition of a complex fork from its use where it might interfere with the legibility of a sentence.
 
@@ -96,6 +130,19 @@ I have {@thing} to say
 and I am saying {@thing: 0 -> (them), (it)}.
 ```
 {% end %}
+
+Silent sets, declared with a `#$` sign, *do not* immediately execute and so do not immediately exclude a branch.
+
+{% bml_snippet() %}
+```bml
+{#$thing: (some things), (something), (nothing)}
+{@!thing}
+{@!thing}
+{@!thing}
+```
+{% end %}
+
+Care must be taken that references to silently declared sets occur after an initial `{@!id}` execution, or otherwise provide a fallback option.
 
 {% try_it() %}
 Try writing some references in [the sandbox](/sandbox)!
