@@ -26,7 +26,9 @@ Javascript code is defined in a fork branch, marked with square brackets. If you
 
 Eval blocks are evaluated as Javascript through [the `Function` constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function). They pass data back to BML with two provided functions - `insert` and `bind`.
 
-`insert` simply takes a string and inserts it in the rendered output.
+### Insertion
+
+`insert` simply takes a string and inserts it in the branch's output.
 
 {% bml_snippet() %}
 ```bml
@@ -35,6 +37,25 @@ Eval blocks are evaluated as Javascript through [the `Function` constructor](htt
 ]}
 ```
 {% end %}
+
+Note that `insert` writes to the _branch_, not the document. This distinction is relevant when dealing with multiple branches and silent forks.
+
+{% bml_snippet() %}
+```bml
+{[insert('foo')], (bar)}
+```
+{% end %}
+
+{% bml_snippet() %}
+```bml
+{#silent: [insert('foo')], (bar)}
+Insert writes to the branch, not immediately to the document.
+{@silent}
+```
+{% end %}
+
+
+### Binding
 
 You can mark variables to be saved between eval blocks with the `bind` function. It takes an object where all its keys are valid javascript identifiers, and injects its members into every following eval block.
 
