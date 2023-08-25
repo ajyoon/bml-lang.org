@@ -131,6 +131,16 @@ and I am saying {@thing: 0 -> (them), (it)}.
 ```
 {% end %}
 
+For convenience, end-of-line characters immediately following silent forks are also omitted.
+
+{% bml_snippet() %}
+```bml
+Silent forks
+{#test: (do not), (output)}
+blank lines
+```
+{% end %}
+
 Silent sets, declared with a `#$` sign, *do not* immediately execute and so do not immediately exclude a branch.
 
 {% bml_snippet() %}
