@@ -19,7 +19,7 @@ It can be helpful to break up larger projects into multiple files, especially wh
 
 The included BML document is then rendered and its output is inserted at the include site. The same random seed is used for the included document.
 
-Named choice results are passed back to the outer renderer just as if they had been defined in the main file.
+Named forks are passed back to the outer renderer just as if they had been defined in the main file.
 
 ```bml
 // In script.bml:
@@ -46,6 +46,7 @@ Eval bindings are similarly passed back to the outer renderer, though they are n
 {[insert(foo)]}
 ```
 
+If an include provides an existing fork reference or eval binding, it will be silently ridden with the included version. This behavior allows files to be included multiple times in the same include chain, needed for things like shared dependencies, as BML does not use namespacing.
 
 {% note() %}
 Some technical details: Included BML is not post-processed until the rest of the top-level document is. The outer RNG state is not affected by random operations in the included path. Includes are not supported in web browsers.
