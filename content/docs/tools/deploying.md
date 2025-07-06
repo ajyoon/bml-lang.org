@@ -24,7 +24,7 @@ cross-site-scripting attacks on sites that, for example, might support
 The easiest way to pull BML into your website is using the [jsdelivr](https://www.jsdelivr.com/) hosted artifacts. Simply add this tag to the `<head>` section of your page:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bml@0.1.9/dist/bml.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bml@0.2.0/dist/bml.bundle.js"></script>
 ```
 
 Once loaded, `bml` is exposed by a single method which takes a string of
@@ -68,7 +68,7 @@ BML can be added as a dependency in your site's `package.json`.
 ```json
 {
   "dependencies": {
-    "bml": "0.1.9"
+    "bml": "0.2.0"
   },
 }
 ```
